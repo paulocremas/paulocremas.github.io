@@ -133,7 +133,7 @@
     #contact > .wrap-wide { margin-top: clamp(24px, 6vh, 72px); }
   }
 
-  #pillars, #approach, #proof {
+  #pillars, #approach, #proof, #process {
     padding-top: clamp(24px, 6vw, 72px);
     padding-bottom: clamp(24px, 6vw, 72px);
   }
@@ -270,6 +270,7 @@
     animation: scroll-cue-bob-flow 2.2s ease-in-out infinite;
     transition: color 0.3s ease, border-color 0.3s ease;
   }
+  #hero .scroll-cue { margin: 40px 0 0; }
   .scroll-cue:hover { text-decoration: none; }
   #hero .scroll-cue:hover { color: #0875c1; border-color: #0875c1; }
   #pillars .scroll-cue:hover { color: #967cdb; border-color: #967cdb; }
@@ -668,6 +669,7 @@
     .pillar-row { grid-template-columns: 1fr; }
     .mini-grid { grid-template-columns: 1fr; }
     .pillar-points { grid-template-columns: 1fr; }
+    .pillar-points p { flex-direction: row; align-items: center; text-align: left; gap: 14px; }
   }
   @media (min-width: 641px) and (max-width: 900px) {
     .mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -754,7 +756,10 @@
   }
   .split-layout > :first-child { max-width: 440px; }
   #process .split-layout { align-items: center; }
-  #process .split-layout > :last-child { flex-basis: 480px; min-width: 460px; }
+  #process .split-layout > :last-child { flex-basis: 480px; min-width: 0; }
+  @container (min-width: 800px) {
+    #process .split-layout > :last-child { min-width: 460px; }
+  }
   #contact .split-layout { align-items: center; }
   #process .lede { max-width: none; }
   #process .lede { line-height: 1.65; }
@@ -768,6 +773,9 @@
     box-shadow: 0 0 40px rgba(236, 233, 226, 0.06);
   }
   .diagram-frame svg { display: block; width: 100%; height: auto; }
+  @media (max-width: 640px) {
+    .diagram-frame { max-width: 88%; margin: 0 auto; padding: 14px; }
+  }
 
   /* ---------- contact ---------- */
   .contact h2 { color: var(--text); }
@@ -815,7 +823,8 @@
   }
 
   @media (max-width: 640px) {
-    .nav-links { gap: 14px; }
+    .nav-name { font-size: 12px; }
+    .nav-links { gap: 10px; font-size: 10.5px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
