@@ -856,7 +856,7 @@
       <a href="#approach">approach</a>
       <a href="#proof">proof</a>
       <a href="#process">process</a>
-      <a href="#contact">contact</a>
+      <a href="#contact" data-scroll-end>contact</a>
     </div>
   </div>
 </header>
@@ -867,7 +867,7 @@
     <h1>I find the precise solution.<br><em>Not just a working one.</em></h1>
     <p class="sub">Full ownership, AI-directed engineering, and architecture built to perform, refined until it actually fits what you need.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-primary" href="#contact" data-scroll-end>Get in touch</a>
       <a class="btn btn-ghost" href="https://github.com/paulocremas-showcase" target="_blank" rel="noopener">Inspect the engineering on GitHub</a>
     </div>
   </div>
@@ -1147,6 +1147,13 @@
   setHeaderHeight();
   window.addEventListener('resize', setHeaderHeight);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(setHeaderHeight);
+
+  document.querySelectorAll('[data-scroll-end]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  });
 })();
 
 (function () {
