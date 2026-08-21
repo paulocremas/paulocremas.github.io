@@ -807,7 +807,7 @@
 
   /* ---------- contact ---------- */
   .contact { flex-direction: column; justify-content: center; }
-  .contact > .wrap-wide { margin-top: clamp(80px, 16vh, 200px); }
+  .contact > .wrap-wide { margin-top: clamp(16px, 3vh, 32px); }
   .contact-prism {
     display: block;
     width: 100%;
@@ -1155,13 +1155,13 @@
       </div>
     </div>
   </div>
-  <svg class="contact-prism" viewBox="0 0 2000 750" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+  <svg class="contact-prism" viewBox="0 0 2000 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
     <defs>
       <filter id="prismBlur" x="-30%" y="-30%" width="160%" height="160%">
-        <feGaussianBlur stdDeviation="6" />
+        <feGaussianBlur stdDeviation="3" />
       </filter>
       <filter id="prismSoftBlur" x="-30%" y="-30%" width="160%" height="160%">
-        <feGaussianBlur stdDeviation="6.5" />
+        <feGaussianBlur stdDeviation="3" />
       </filter>
       <linearGradient id="prismGlass" x1="10%" y1="0%" x2="90%" y2="100%">
         <stop offset="0%" stop-color="#ece9e2" stop-opacity="0.05" />
@@ -1173,26 +1173,26 @@
         <stop offset="0%" stop-color="#fff" stop-opacity="1" />
         <stop offset="100%" stop-color="#fff" stop-opacity="0" />
       </linearGradient>
-      <mask id="fadeLeftMask" maskUnits="userSpaceOnUse" x="-150" y="-150" width="2300" height="1050">
-        <rect x="-150" y="-150" width="2300" height="1050" fill="url(#fadeLeftGrad)" />
+      <mask id="fadeLeftMask" maskUnits="userSpaceOnUse" x="-150" y="-150" width="2300" height="580">
+        <rect x="-150" y="-150" width="2300" height="580" fill="url(#fadeLeftGrad)" />
       </mask>
       <linearGradient id="fadeRightGrad" gradientUnits="userSpaceOnUse" x1="1780" y1="0" x2="2080" y2="0">
         <stop offset="0%" stop-color="#fff" stop-opacity="1" />
         <stop offset="100%" stop-color="#fff" stop-opacity="0" />
       </linearGradient>
-      <mask id="fadeRightMask" maskUnits="userSpaceOnUse" x="-150" y="-150" width="2300" height="1050">
-        <rect x="-150" y="-150" width="2300" height="1050" fill="url(#fadeRightGrad)" />
+      <mask id="fadeRightMask" maskUnits="userSpaceOnUse" x="-150" y="-150" width="2300" height="580">
+        <rect x="-150" y="-150" width="2300" height="580" fill="url(#fadeRightGrad)" />
       </mask>
     </defs>
     <g filter="url(#prismBlur)" mask="url(#fadeLeftMask)" opacity="0.85">
-      <polygon points="968,222 968,226 0,180 0,110" fill="#0875c1" />
-      <polygon points="968,226 968,230 0,270 0,180" fill="#00a979" />
-      <polygon points="968,230 968,234 0,380 0,270" fill="#967cdb" />
-      <polygon points="968,234 968,238 0,510 0,380" fill="#d46784" />
-      <polygon points="968,238 968,242 0,660 0,510" fill="#7c9d30" />
+      <polygon points="984,118 984,120 0,120 0,84" fill="#0875c1" />
+      <polygon points="984,120 984,122 0,156 0,120" fill="#00a979" />
+      <polygon points="984,122 984,124 0,193 0,156" fill="#967cdb" />
+      <polygon points="984,124 984,126 0,229 0,193" fill="#d46784" />
+      <polygon points="984,126 984,128 0,266 0,229" fill="#7c9d30" />
     </g>
-    <polygon points="1000,179 930,300 1070,300" fill="url(#prismGlass)" stroke="rgba(236,233,226,0.4)" stroke-width="2" filter="url(#prismSoftBlur)" />
-    <line x1="1032" y1="234" x2="2000" y2="364" stroke="#ece9e2" stroke-width="6" stroke-linecap="round" opacity="0.85" mask="url(#fadeRightMask)" />
+    <polygon points="1000,95 965,156 1035,156" fill="url(#prismGlass)" stroke="rgba(236,233,226,0.4)" stroke-width="2" filter="url(#prismSoftBlur)" />
+    <line x1="1016" y1="123" x2="2000" y2="183" stroke="#ece9e2" stroke-width="4" stroke-linecap="round" opacity="0.85" mask="url(#fadeRightMask)" />
   </svg>
 </section>
 
