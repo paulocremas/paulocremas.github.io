@@ -861,16 +861,12 @@
     filter: drop-shadow(0 0 calc(var(--active) * 26px) rgba(236, 233, 226, calc(var(--active) * 0.7)));
     transition: opacity 2.6s ease-out, filter 2.6s ease-out;
   }
-  .prism-spotlight {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  .prism-spot {
     opacity: 0;
-    background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(236, 233, 226, 0.9), transparent 70%);
     mix-blend-mode: screen;
-    transition: opacity 0.25s ease-out;
+    transition: opacity 0.35s ease-out;
   }
-  .contact-prism-wrap:hover .prism-spotlight { opacity: 1; }
+  .contact-prism-wrap:hover .prism-spot { opacity: 1; }
   .contact h2 { color: var(--text); }
   .contact-links {
     margin-top: 0;
@@ -1297,18 +1293,28 @@
       <mask id="fadeRightMask" maskUnits="userSpaceOnUse" x="-150" y="-150" width="2300" height="580">
         <rect x="-150" y="-150" width="2300" height="580" fill="url(#fadeRightGrad)" />
       </mask>
+      <radialGradient id="prismSpotGrad" gradientUnits="userSpaceOnUse" cx="1000" cy="140" r="190">
+        <stop offset="0%" stop-color="#ece9e2" stop-opacity="0.4" />
+        <stop offset="50%" stop-color="#ece9e2" stop-opacity="0.12" />
+        <stop offset="100%" stop-color="#ece9e2" stop-opacity="0" />
+      </radialGradient>
+      <mask id="prismShapeMask" maskUnits="userSpaceOnUse" x="-200" y="-200" width="2400" height="680">
+        <use href="#prismBeams" />
+        <use href="#prismGlassShape" />
+        <use href="#prismExitBeam" />
+      </mask>
     </defs>
-    <g filter="url(#prismBlur)" mask="url(#fadeLeftMask)" opacity="0.6">
+    <g id="prismBeams" filter="url(#prismBlur)" mask="url(#fadeLeftMask)" opacity="0.6">
       <polygon points="984,118 984,120 0,120 0,84" fill="#0875c1" />
       <polygon points="984,120 984,122 0,156 0,120" fill="#00a979" />
       <polygon points="984,122 984,124 0,193 0,156" fill="#967cdb" />
       <polygon points="984,124 984,126 0,229 0,193" fill="#d46784" />
       <polygon points="984,126 984,128 0,266 0,229" fill="#7c9d30" />
     </g>
-    <polygon points="1000,95 965,156 1035,156" fill="url(#prismGlass)" stroke="rgba(236,233,226,0.4)" stroke-width="2" filter="url(#prismSoftBlur)" />
-    <line x1="1016" y1="123" x2="2000" y2="183" stroke="#ece9e2" stroke-width="4" stroke-linecap="round" opacity="0.85" mask="url(#fadeRightMask)" filter="url(#prismBlur)" />
+    <polygon id="prismGlassShape" points="1000,95 965,156 1035,156" fill="url(#prismGlass)" stroke="rgba(236,233,226,0.4)" stroke-width="2" filter="url(#prismSoftBlur)" />
+    <line id="prismExitBeam" x1="1016" y1="123" x2="2000" y2="183" stroke="#ece9e2" stroke-width="4" stroke-linecap="round" opacity="0.85" mask="url(#fadeRightMask)" filter="url(#prismBlur)" />
+    <rect class="prism-spot" x="-200" y="-200" width="2400" height="680" fill="url(#prismSpotGrad)" mask="url(#prismShapeMask)" />
   </svg>
-  <div class="prism-spotlight" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -1332,11 +1338,12 @@
   });
 
   var prismWrap = document.querySelector('.contact-prism-wrap');
-  if (prismWrap) {
+  var prismSpotGrad = document.getElementById('prismSpotGrad');
+  if (prismWrap && prismSpotGrad) {
     prismWrap.addEventListener('pointermove', function (e) {
       var rect = prismWrap.getBoundingClientRect();
-      prismWrap.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
-      prismWrap.style.setProperty('--my', ((e.clientY - rect.top) / rect.height * 100) + '%');
+      prismSpotGrad.setAttribute('cx', (e.clientX - rect.left) / rect.width * 2000);
+      prismSpotGrad.setAttribute('cy', (e.clientY - rect.top) / rect.height * 280);
     });
   }
 })();
