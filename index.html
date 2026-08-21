@@ -126,7 +126,7 @@
     border-bottom: 1px solid var(--line);
   }
   section:last-of-type { border-bottom: none; }
-  @media (min-width: 900px) {
+  @media (min-width: 1024px) {
     section {
       min-height: calc(100vh - var(--header-h));
       min-height: calc(100dvh - var(--header-h));
@@ -305,7 +305,7 @@
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50% { transform: translateX(-50%) translateY(6px); }
   }
-  @media (min-width: 900px) {
+  @media (min-width: 1024px) {
     .scroll-cue {
       display: flex;
       position: absolute;
@@ -352,6 +352,9 @@
     border: 1px solid var(--line);
     display: inline-block;
     transition: box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  @media (max-width: 640px) {
+    .btn { font-size: 12px; padding: 10px 18px; }
   }
   .btn:hover { transform: translateY(-2px); }
   .btn-primary {
@@ -690,7 +693,7 @@
     .pillar-points { grid-template-columns: 1fr; }
     .pillar-points p { flex-direction: row; align-items: center; text-align: left; gap: 14px; }
   }
-  @media (min-width: 641px) and (max-width: 900px) {
+  @media (min-width: 641px) and (max-width: 1023px) {
     .mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   .p-security { color: color-mix(in srgb, #0875c1 calc(var(--active) * 100%), var(--text-muted)); text-shadow: 0 0 calc(var(--active) * 10px) rgba(8, 117, 193, calc(var(--active) * 0.6)); }
@@ -1024,7 +1027,7 @@
 
       <figure>
       <div class="diagram-frame">
-        <svg viewBox="0 0 725 940" role="img" aria-label="Workflow diagram, read top to bottom: discovery leads to architecture and security design, where an architecture specialist is consulted, then an AI-directed build, where a company specialist and a scoped execution agent are consulted. A decision gate splits into two paths, a safe change skips ahead directly while a risky change is routed through my review first, a human-only step with no AI layer, then both rejoin at production. Production feeds monitoring, which produces both a technical and a plain-language document, and a dashed line loops back from there to discovery, showing the cycle repeats.">
+        <svg viewBox="0 0 750 940" role="img" aria-label="Workflow diagram, read top to bottom: discovery leads to architecture and security design, where an architecture specialist is consulted, then an AI-directed build, where a company specialist and a scoped execution agent are consulted. A decision gate splits into two paths, a safe change skips ahead directly while a risky change is routed through my review first, a human-only step with no AI layer, then both rejoin at production. Production feeds monitoring, which produces both a technical and a plain-language document, and a dashed line loops back from there to discovery, showing the cycle repeats.">
           <defs>
             <marker id="arrow-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
               <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
@@ -1047,10 +1050,10 @@
             <text x="340" y="232" text-anchor="middle">build</text>
 
             <polygon points="340,276 385,311 340,346 295,311" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5" filter="url(#boxGlow)" />
-            <text x="340" y="315" text-anchor="middle" font-size="15" fill="var(--accent)">risk?</text>
+            <text x="340" y="315" text-anchor="middle" font-size="16" fill="var(--accent)">risk?</text>
 
             <rect x="440" y="420" width="140" height="55" rx="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5" filter="url(#boxGlow)" />
-            <text x="510" y="452" text-anchor="middle" font-size="17">My review</text>
+            <text x="510" y="452" text-anchor="middle" font-size="18">My review</text>
 
             <rect x="170" y="590" width="340" height="60" rx="9" fill="var(--surface-2)" stroke="var(--line)" filter="url(#boxGlow)" />
             <text x="340" y="626" text-anchor="middle">Production</text>
@@ -1059,11 +1062,11 @@
             <text x="340" y="712" text-anchor="middle">Monitor</text>
 
             <rect x="140" y="784" width="180" height="50" rx="9" fill="var(--surface-2)" stroke="var(--line)" filter="url(#boxGlow)" />
-            <text x="230" y="814" text-anchor="middle" font-size="17">Technical doc</text>
+            <text x="230" y="814" text-anchor="middle" font-size="18">Technical doc</text>
 
             <rect x="360" y="784" width="180" height="50" rx="9" fill="var(--surface-2)" stroke="var(--line)" filter="url(#boxGlow)" />
-            <text x="450" y="808" text-anchor="middle" font-size="16">Plain-language</text>
-            <text x="450" y="824" text-anchor="middle" font-size="16">doc</text>
+            <text x="450" y="808" text-anchor="middle" font-size="17">Plain-language</text>
+            <text x="450" y="824" text-anchor="middle" font-size="17">doc</text>
           </g>
 
           <g stroke="currentColor" fill="none" stroke-width="1.5" opacity="0.55">
@@ -1094,12 +1097,12 @@
           </g>
 
           <polyline points="340,858 340,880 40,880 40,40 167,40" fill="none" stroke="var(--structure)" stroke-width="1.5" stroke-dasharray="3 4" marker-end="url(#arrow-v)" opacity="0.7" />
-          <text x="20" y="460" transform="rotate(-90 20 460)" text-anchor="middle" font-family="var(--font-mono)" font-size="13" fill="var(--structure)">continuous, not a one-off project</text>
+          <text x="20" y="445" transform="rotate(-90 20 445)" text-anchor="middle" font-family="var(--font-mono)" font-size="14" fill="var(--structure)">continuous, not a one-off project</text>
 
-          <text x="210" y="418" text-anchor="middle" font-family="var(--font-mono)" font-size="15" fill="var(--text-muted)">safe, ships direct</text>
-          <text x="600" y="390" text-anchor="middle" font-family="var(--font-mono)" font-size="15" fill="var(--accent)">risky, reviewed first</text>
+          <text x="210" y="418" text-anchor="middle" font-family="var(--font-mono)" font-size="16" fill="var(--text-muted)">safe, ships direct</text>
+          <text x="600" y="390" text-anchor="middle" font-family="var(--font-mono)" font-size="16" fill="var(--accent)">risky, reviewed first</text>
 
-          <g font-family="var(--font-mono)" font-size="13.5" fill="var(--structure)">
+          <g font-family="var(--font-mono)" font-size="15" fill="var(--structure)">
             <line x1="513" y1="128" x2="524" y2="128" stroke="var(--structure)" stroke-width="1.5" opacity="0.6" />
             <circle cx="524" cy="128" r="2.5" fill="var(--structure)" />
             <text x="532" y="132">architecture specialist</text>
@@ -1111,9 +1114,9 @@
             <circle cx="524" cy="228" r="2.5" fill="var(--structure)" />
             <text x="532" y="232">execution agent</text>
 
-            <text x="421" y="448" text-anchor="end" fill="var(--accent)">no AI layer, human only</text>
-            <line x1="429" y1="444" x2="438" y2="444" stroke="var(--accent)" stroke-width="1.5" opacity="0.6" />
-            <circle cx="429" cy="444" r="2.5" fill="var(--accent)" />
+            <text x="421" y="460" text-anchor="end" fill="var(--accent)">no AI layer, human only</text>
+            <line x1="429" y1="456" x2="438" y2="456" stroke="var(--accent)" stroke-width="1.5" opacity="0.6" />
+            <circle cx="429" cy="456" r="2.5" fill="var(--accent)" />
           </g>
         </svg>
       </div>
