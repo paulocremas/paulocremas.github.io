@@ -13,6 +13,7 @@
     --accent: #439bf7;
     --accent-soft: rgba(67, 155, 247, 0.14);
     --structure: #4f96a8;
+    --header-h: 65px;
     --font-sans: -apple-system, "Segoe UI", ui-sans-serif, system-ui, sans-serif;
     --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, monospace;
   }
@@ -120,13 +121,14 @@
   section:last-of-type { border-bottom: none; }
   @media (min-width: 900px) {
     section {
-      min-height: 100vh;
-      min-height: 100dvh;
+      min-height: calc(100vh - var(--header-h));
+      min-height: calc(100dvh - var(--header-h));
       display: flex;
       align-items: center;
     }
     section > .wrap-wide { width: 100%; }
     #contact > .wrap-wide { margin-top: clamp(24px, 6vh, 72px); }
+    .scroll-cue { display: flex; }
   }
 
   #pillars, #approach {
@@ -254,11 +256,11 @@
   }
   #pillars, #approach, #proof, #process { position: relative; }
   .scroll-cue {
+    display: none;
     position: absolute;
     left: 50%;
     bottom: 28px;
     transform: translateX(-50%);
-    display: flex;
     align-items: center;
     justify-content: center;
     width: 44px;
@@ -653,6 +655,7 @@
   @media (max-width: 640px) {
     .pillar-row { grid-template-columns: 1fr; }
     .mini-grid { grid-template-columns: 1fr; }
+    .pillar-points { grid-template-columns: 1fr; }
   }
   @media (min-width: 641px) and (max-width: 900px) {
     .mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1108,6 +1111,16 @@
 <footer>paulo cremasco &middot; built clear and simple</footer>
 
 <script>
+(function () {
+  var header = document.querySelector('header');
+  function setHeaderHeight() {
+    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  }
+  setHeaderHeight();
+  window.addEventListener('resize', setHeaderHeight);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(setHeaderHeight);
+})();
+
 (function () {
   var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
   var links = [];
