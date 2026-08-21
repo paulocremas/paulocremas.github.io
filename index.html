@@ -807,7 +807,7 @@
 
   /* ---------- contact ---------- */
   .contact { flex-direction: column; justify-content: center; }
-  .contact > .wrap-wide { margin-top: clamp(40px, 8vh, 96px); }
+  .contact > .wrap-wide { margin-top: clamp(64px, 12vh, 140px); }
   .contact-prism {
     --active: 0;
     display: block;
@@ -816,7 +816,8 @@
     margin-top: 32px;
     pointer-events: none;
     opacity: calc(0.12 + var(--active) * 0.88);
-    transition: opacity 1.6s ease-out;
+    filter: drop-shadow(0 0 calc(var(--active) * 26px) rgba(236, 233, 226, calc(var(--active) * 0.7)));
+    transition: opacity 2.6s ease-out, filter 2.6s ease-out;
   }
   .contact h2 { color: var(--text); }
   .contact-links {
