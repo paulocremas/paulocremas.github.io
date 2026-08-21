@@ -1,3 +1,5 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Paulo Cremasco</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,7 +130,6 @@
     }
     section > .wrap-wide { width: 100%; }
     #contact > .wrap-wide { margin-top: clamp(24px, 6vh, 72px); }
-    .scroll-cue { display: flex; }
   }
 
   #pillars, #approach {
@@ -256,19 +257,16 @@
   }
   #pillars, #approach, #proof, #process { position: relative; }
   .scroll-cue {
-    display: none;
-    position: absolute;
-    left: 50%;
-    bottom: 28px;
-    transform: translateX(-50%);
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
+    margin: 32px auto 0;
     border: 1px solid var(--line);
     border-radius: 50%;
     color: var(--text-muted);
-    animation: scroll-cue-bob 2.2s ease-in-out infinite;
+    animation: scroll-cue-bob-flow 2.2s ease-in-out infinite;
     transition: color 0.3s ease, border-color 0.3s ease;
   }
   .scroll-cue:hover { text-decoration: none; }
@@ -281,9 +279,22 @@
     font-size: 22px;
     font-variation-settings: 'opsz' 24, 'wght' 340, 'FILL' 0, 'GRAD' 0;
   }
+  @keyframes scroll-cue-bob-flow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
   @keyframes scroll-cue-bob {
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50% { transform: translateX(-50%) translateY(6px); }
+  }
+  @media (min-width: 900px) {
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      margin: 0;
+      animation-name: scroll-cue-bob;
+    }
   }
   @media (prefers-reduced-motion: reduce) {
     .scroll-cue { animation: none; }
@@ -1086,7 +1097,7 @@
       </figure>
     </div>
   </div>
-  <a class="scroll-cue" href="#contact" aria-label="Scroll to next section">
+  <a class="scroll-cue" href="#contact" data-scroll-end aria-label="Scroll to next section">
     <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
   </a>
 </section>
@@ -1119,6 +1130,14 @@
   setHeaderHeight();
   window.addEventListener('resize', setHeaderHeight);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(setHeaderHeight);
+
+  var scrollEndLink = document.querySelector('[data-scroll-end]');
+  if (scrollEndLink) {
+    scrollEndLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  }
 })();
 
 (function () {
