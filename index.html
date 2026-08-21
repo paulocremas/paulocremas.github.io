@@ -134,7 +134,6 @@
       align-items: center;
     }
     section > .wrap-wide { width: 100%; }
-    #contact > .wrap-wide { margin-top: clamp(24px, 6vh, 72px); }
   }
 
   #pillars, #approach, #proof, #process {
@@ -783,6 +782,8 @@
     #process .split-layout > :last-child { min-width: 460px; }
   }
   #contact .split-layout { align-items: center; }
+  #contact .split-layout > :first-child { position: relative; }
+  #contact .split-layout > :first-child .tag { position: absolute; top: -38px; left: 0; margin-bottom: 0; }
   #process .lede { max-width: none; }
   #process .lede { line-height: 1.65; }
   #process .lede + .lede { font-size: 16px; margin-top: 22px; }
