@@ -899,13 +899,12 @@
     flex-shrink: 0;
     fill: currentColor;
     opacity: 0.7;
-    transition: opacity 0.3s ease, fill 0.3s ease;
+    transition: opacity 0.3s ease, filter 0.3s ease;
   }
-  .contact-link:hover .contact-icon { opacity: 1; }
-  .contact-link:hover .icon-gmail { fill: #EA4335; }
-  .contact-link:hover .icon-linkedin { fill: #0A66C2; }
-  .contact-link:hover .icon-github { fill: #f2e9c9; }
-  .contact-link:hover .icon-upwork { fill: #14A800; }
+  .contact-link:hover .contact-icon {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(242, 233, 201, 0.95));
+  }
   @container (max-width: 300px) {
     .contact-link { flex-direction: column; align-items: flex-start; gap: 2px; }
   }
