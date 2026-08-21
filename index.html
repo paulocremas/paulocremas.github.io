@@ -425,9 +425,9 @@
     position: relative;
     display: grid;
     grid-template-columns: minmax(140px, 220px) 1fr;
-    gap: 8px 28px;
-    padding: 13px 0;
-    align-items: baseline;
+    gap: 8px 0px;
+    padding: 19px 0;
+    align-items: center;
   }
   .spec-row::before {
     content: "";
@@ -452,20 +452,48 @@
     background-repeat: repeat-x;
   }
   .spec-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-mono);
-    font-size: 13.5px;
+    font-size: 16px;
+    font-weight: 700;
     color: var(--text-muted);
   }
+  .spec-label .material-symbols-outlined {
+    font-size: 20px;
+    flex-shrink: 0;
+    font-variation-settings: 'opsz' 20, 'wght' 340, 'FILL' 0, 'GRAD' 0;
+  }
   .spec-value {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: -20px;
     color: var(--text);
     font-size: 16px;
     line-height: 1.5;
   }
   .spec-value b {
+    flex: 0 0 160px;
+    text-align: left;
     font-family: var(--font-mono);
-    font-weight: 600;
+    font-weight: 700;
+    font-size: clamp(26px, 3.2vw, 32px);
     color: var(--accent);
     font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  .spec-row.pillar-fin .spec-value b {
+    font-size: clamp(21px, 2.6vw, 26px);
+  }
+  .spec-text { min-width: 0; }
+  .spec-value p {
+    margin: 0;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.5;
   }
   .spec-value .gloss {
     display: block;
@@ -473,6 +501,26 @@
     font-family: var(--font-mono);
     font-size: 12.5px;
     color: var(--structure);
+  }
+  @media (max-width: 640px) {
+    .spec-value { flex-direction: column; align-items: flex-start; gap: 8px; margin-left: 0; }
+    .spec-value b { flex-basis: auto; text-align: left; }
+  }
+  .proof-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 24px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+  .proof-note .material-symbols-outlined {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-variation-settings: 'opsz' 20, 'wght' 340, 'FILL' 0, 'GRAD' 0;
   }
   @media (max-width: 560px) {
     .spec-row { grid-template-columns: 1fr; gap: 4px; }
@@ -846,11 +894,25 @@
     transform: translateX(4px);
     text-decoration: none;
   }
-  .contact-link span {
+  .contact-value {
     font-family: var(--font-mono);
     font-size: 13px;
     color: var(--text-muted);
   }
+  .contact-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .contact-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    fill: currentColor;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  .contact-link:hover .contact-icon { opacity: 1; }
   @container (max-width: 300px) {
     .contact-link { flex-direction: column; align-items: flex-start; gap: 2px; }
   }
@@ -1015,22 +1077,23 @@
 <section id="proof">
   <div class="wrap-wide">
     <div class="tag">/ proof</div>
-    <h2>Measured, not implied.</h2>
+    <h2>Measured,<br>not implied.</h2>
 
     <div class="spec-group">
       <div class="spec-row pillar-eng">
-        <div class="spec-label">Data sync speed</div>
-        <div class="spec-value"><b>18x</b> faster syncing product and order data between systems. Recognized a pattern already proven elsewhere, applied it here, verified against real data before shipping.</div>
+        <div class="spec-label"><span class="material-symbols-outlined" aria-hidden="true">speed</span>Data sync<br>speed</div>
+        <div class="spec-value"><b>18x</b><div class="spec-text"><p>A sync pattern already proven in one system was applied to an older one, moving product and order data 18 times faster, verified against real data before going live.</p><span class="gloss"><a href="https://github.com/paulocremas-showcase/data-etl-demo" target="_blank" rel="noopener">Reproducible benchmark on GitHub &rarr;</a></span></div></div>
       </div>
       <div class="spec-row pillar-rel">
-        <div class="spec-label">Data loss incidents</div>
-        <div class="spec-value"><b>3 &rarr; 0</b>. Three pipelines pulling from the same vendor API kept colliding on one shared limit, losing data. Zero recurring failures after the fix.</div>
+        <div class="spec-label"><span class="material-symbols-outlined" aria-hidden="true">shield</span>Data loss<br>incidents</div>
+        <div class="spec-value"><b>3 &rarr; 0</b><div class="spec-text"><p>Three jobs quietly competed for the same limit and lost data. Schedules now stay clear of each other and retries happen automatically, so data always arrives complete.</p><span class="gloss"><a href="https://github.com/paulocremas-showcase/data-extraction-demo" target="_blank" rel="noopener">The fix, on GitHub &rarr;</a></span></div></div>
       </div>
       <div class="spec-row pillar-fin">
-        <div class="spec-label">Manual product review</div>
-        <div class="spec-value">Filling in missing product details, once done by hand, now compressed into <b>one AI batch run</b>.</div>
+        <div class="spec-label"><span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>Manual product review</div>
+        <div class="spec-value"><b>One Batch Run</b><div class="spec-text"><p>Filling in missing product details used to mean going through each item by hand. Now it happens in a single AI batch run.</p><span class="gloss"><a href="https://github.com/paulocremas-showcase/ai-enrichment-demo" target="_blank" rel="noopener">The code, on GitHub &rarr;</a></span></div></div>
       </div>
     </div>
+    <p class="proof-note"><span class="material-symbols-outlined" aria-hidden="true">privacy_tip</span>GitHub links point to sanitized portfolio rebuilds of this work. Real client and company details stay confidential.</p>
   </div>
 </section>
 
@@ -1153,9 +1216,22 @@
         <p>Code and technical detail live on GitHub.</p>
       </div>
       <div class="contact-links">
-        <a class="contact-link" href="mailto:cremascopaulo@gmail.com">Email <span>cremascopaulo@gmail.com</span></a>
-        <a class="contact-link" href="https://www.linkedin.com/in/pivapaulo/" target="_blank" rel="noopener">LinkedIn <span>in/pivapaulo</span></a>
-        <a class="contact-link" href="https://github.com/paulocremas-showcase" target="_blank" rel="noopener">GitHub <span>paulocremas-showcase</span></a>
+        <a class="contact-link" href="mailto:cremascopaulo@gmail.com">
+          <span class="contact-label"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>Email</span>
+          <span class="contact-value">cremascopaulo@gmail.com</span>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/pivapaulo/" target="_blank" rel="noopener">
+          <span class="contact-label"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</span>
+          <span class="contact-value">in/pivapaulo</span>
+        </a>
+        <a class="contact-link" href="https://github.com/paulocremas-showcase" target="_blank" rel="noopener">
+          <span class="contact-label"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</span>
+          <span class="contact-value">paulocremas-showcase</span>
+        </a>
+        <a class="contact-link" href="https://www.upwork.com/freelancers/~01d1a5305d016c8bd4?viewMode=1" target="_blank" rel="noopener">
+          <span class="contact-label"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>Upwork</span>
+          <span class="contact-value">Freelancer profile</span>
+        </a>
       </div>
     </div>
   </div>
