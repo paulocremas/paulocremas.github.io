@@ -66,10 +66,13 @@
     margin: 0 auto;
   }
   .nav-name {
+    --active: 0;
     font-family: var(--font-mono);
     font-size: 13.5px;
     letter-spacing: 0.02em;
-    color: var(--text);
+    color: color-mix(in srgb, #a293d4 calc(var(--active) * 100%), var(--text-muted));
+    text-shadow: 0 0 calc(var(--active) * 10px) rgba(162, 147, 212, calc(var(--active) * 0.5));
+    transition: color 0.25s ease-out, text-shadow 0.25s ease-out;
   }
   .nav-name:hover { text-decoration: none; color: #a293d4; }
   .nav-links {
@@ -1016,7 +1019,7 @@
         <div class="tag">/ process</div>
         <h2>AI executes.<br>Judgment stays human.</h2>
         <p class="lede">Every project runs the same loop, shown below: <b class="hl-eng">AI does the heavy lifting, I decide</b> what ships straight through and what needs a second look first.</p>
-        <p class="lede">It all runs under one written standard, a <a href="https://github.com/paulocremas/paulocremas-method/blob/main/CONSTITUTION.md" target="_blank" rel="noopener">Constitution</a> I publish in full on GitHub. <b class="hl-eng">Three AI layers do the work: one for architecture, one that knows your company's systems end to end, one for execution</b> (also known as <b>agentic engineering</b>), each supervised, none deciding alone. Nothing ships until I review it.</p>
+        <p class="lede">It all runs under one written standard, a <a href="https://github.com/paulocremas/paulocremas-method/blob/main/CONSTITUTION.md" target="_blank" rel="noopener">Constitution</a> I publish in full on GitHub. <b class="hl-eng">Three AI layers do the work: one for architecture, one that knows your company's systems end to end, one for execution</b> (also known as <b>agentic engineering</b>), each supervised, none deciding alone.</p>
       </div>
 
       <figure>
@@ -1164,7 +1167,7 @@
     if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.spec-value b, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .lede b, .lede a') });
   });
   var hero = document.getElementById('hero');
-  if (hero) links.push({ link: null, section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
+  if (hero) links.push({ link: document.querySelector('.nav-name'), section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
   if (!links.length) return;
 
   var ticking = false;
