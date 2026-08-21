@@ -269,7 +269,31 @@
     transition: color 0.3s ease, border-color 0.3s ease;
   }
   .scroll-cue:hover { text-decoration: none; }
-  #hero .scroll-cue:hover { color: #0875c1; border-color: #0875c1; }
+  .scroll-cue-labeled {
+    width: auto;
+    height: auto;
+    border: none;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .scroll-cue-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .scroll-cue-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    transition: border-color 0.3s ease;
+  }
+  #hero .scroll-cue:hover { color: #0875c1; }
+  #hero .scroll-cue:hover .scroll-cue-circle { border-color: #0875c1; }
   #pillars .scroll-cue:hover { color: #967cdb; border-color: #967cdb; }
   #approach .scroll-cue:hover { color: #00a979; border-color: #00a979; }
   #proof .scroll-cue:hover { color: #d46784; border-color: #d46784; }
@@ -848,8 +872,11 @@
       <a class="btn btn-ghost" href="https://github.com/paulocremas-showcase" target="_blank" rel="noopener">Inspect the engineering on GitHub</a>
     </div>
   </div>
-  <a class="scroll-cue" href="#pillars" aria-label="Scroll to next section">
-    <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
+  <a class="scroll-cue scroll-cue-labeled" href="#pillars" aria-label="Scroll to next section">
+    <span class="scroll-cue-label">scroll</span>
+    <span class="scroll-cue-circle">
+      <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
+    </span>
   </a>
 </section>
 
