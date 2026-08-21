@@ -256,23 +256,12 @@
   /* ---------- hero ---------- */
   .hero {
     position: relative;
-    overflow: hidden;
     padding: clamp(84px, 18vw, 220px) 0 clamp(32px, 10vw, 160px);
     align-items: flex-start;
     background:
       radial-gradient(ellipse 900px 500px at 15% -10%, rgba(162,147,212,0.08), transparent 60%),
       radial-gradient(ellipse 700px 500px at 100% 0%, rgba(79,150,168,0.10), transparent 55%);
   }
-  .hero-prism {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-  }
-  #hero .wrap-wide { position: relative; z-index: 1; }
-  #hero .scroll-cue { z-index: 1; }
   .scroll-cue {
     display: none;
     align-items: center;
@@ -817,6 +806,16 @@
   }
 
   /* ---------- contact ---------- */
+  .contact { position: relative; overflow: hidden; }
+  .contact-prism {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .contact .wrap-wide { position: relative; z-index: 1; }
   .contact h2 { color: var(--text); }
   .contact-links {
     margin-top: 0;
@@ -885,26 +884,6 @@
 </header>
 
 <section class="hero" id="hero">
-  <svg class="hero-prism" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <filter id="prismBlur" x="-30%" y="-30%" width="160%" height="160%">
-        <feGaussianBlur stdDeviation="20" />
-      </filter>
-      <linearGradient id="prismExitGradient" x1="0%" y1="50%" x2="100%" y2="50%">
-        <stop offset="0%" stop-color="#ece9e2" stop-opacity="0.55" />
-        <stop offset="100%" stop-color="#ece9e2" stop-opacity="0" />
-      </linearGradient>
-    </defs>
-    <g filter="url(#prismBlur)">
-      <line x1="0" y1="120" x2="560" y2="350" stroke="#0875c1" stroke-width="46" stroke-linecap="round" opacity="0.4" />
-      <line x1="0" y1="235" x2="560" y2="350" stroke="#00a979" stroke-width="46" stroke-linecap="round" opacity="0.4" />
-      <line x1="0" y1="350" x2="560" y2="350" stroke="#967cdb" stroke-width="46" stroke-linecap="round" opacity="0.4" />
-      <line x1="0" y1="465" x2="560" y2="350" stroke="#d46784" stroke-width="46" stroke-linecap="round" opacity="0.4" />
-      <line x1="0" y1="580" x2="560" y2="350" stroke="#7c9d30" stroke-width="46" stroke-linecap="round" opacity="0.4" />
-      <polygon points="700,220 700,480 1200,600 1200,100" fill="url(#prismExitGradient)" />
-      <polygon points="560,350 700,220 700,480" fill="rgba(236,233,226,0.07)" stroke="rgba(236,233,226,0.3)" stroke-width="2" />
-    </g>
-  </svg>
   <div class="wrap-wide">
     <div class="tag">/ systems engineer</div>
     <h1>I find the precise solution.<br><em>Not just a working one.</em></h1>
@@ -1163,6 +1142,30 @@
 </section>
 
 <section id="contact" class="contact">
+  <svg class="contact-prism" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <filter id="prismBlur" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="12" />
+      </filter>
+      <linearGradient id="prismExitGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+        <stop offset="0%" stop-color="#ece9e2" stop-opacity="0.5" />
+        <stop offset="100%" stop-color="#ece9e2" stop-opacity="0" />
+      </linearGradient>
+      <linearGradient id="prismGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ece9e2" stop-opacity="0.14" />
+        <stop offset="100%" stop-color="#ece9e2" stop-opacity="0.03" />
+      </linearGradient>
+    </defs>
+    <g filter="url(#prismBlur)">
+      <line x1="0" y1="120" x2="560" y2="350" stroke="#0875c1" stroke-width="34" stroke-linecap="round" opacity="0.42" />
+      <line x1="0" y1="235" x2="560" y2="350" stroke="#00a979" stroke-width="34" stroke-linecap="round" opacity="0.42" />
+      <line x1="0" y1="350" x2="560" y2="350" stroke="#967cdb" stroke-width="34" stroke-linecap="round" opacity="0.42" />
+      <line x1="0" y1="465" x2="560" y2="350" stroke="#d46784" stroke-width="34" stroke-linecap="round" opacity="0.42" />
+      <line x1="0" y1="580" x2="560" y2="350" stroke="#7c9d30" stroke-width="34" stroke-linecap="round" opacity="0.42" />
+      <polygon points="700,220 700,480 1200,600 1200,100" fill="url(#prismExitGradient)" />
+    </g>
+    <polygon points="560,350 700,220 700,480" fill="url(#prismGlass)" stroke="rgba(236,233,226,0.35)" stroke-width="1.5" />
+  </svg>
   <div class="wrap-wide">
     <div class="split-layout">
       <div>
