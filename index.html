@@ -809,11 +809,14 @@
   .contact { flex-direction: column; justify-content: center; }
   .contact > .wrap-wide { margin-top: clamp(40px, 8vh, 96px); }
   .contact-prism {
+    --active: 0;
     display: block;
     width: 100%;
     height: auto;
     margin-top: 32px;
     pointer-events: none;
+    opacity: calc(0.12 + var(--active) * 0.88);
+    transition: opacity 1.6s ease-out;
   }
   .contact h2 { color: var(--text); }
   .contact-links {
@@ -1221,7 +1224,7 @@
   var links = [];
   navLinks.forEach(function (a) {
     var section = document.getElementById(a.getAttribute('href').slice(1));
-    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.spec-value b, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .lede b, .lede a') });
+    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.spec-value b, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .lede b, .lede a, .contact-prism') });
   });
   var hero = document.getElementById('hero');
   if (hero) links.push({ link: document.querySelector('.nav-name'), section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
