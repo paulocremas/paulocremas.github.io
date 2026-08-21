@@ -807,7 +807,7 @@
 
   /* ---------- contact ---------- */
   .contact { flex-direction: column; justify-content: center; }
-  .contact > .wrap-wide { margin-top: clamp(16px, 4vh, 40px); }
+  .contact > .wrap-wide { margin-top: clamp(24px, 6vh, 64px); }
   .contact-prism {
     display: block;
     width: 100%;
@@ -1160,6 +1160,9 @@
       <filter id="prismBlur" x="-30%" y="-30%" width="160%" height="160%">
         <feGaussianBlur stdDeviation="6" />
       </filter>
+      <filter id="prismSoftBlur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2" />
+      </filter>
       <linearGradient id="prismGlass" x1="10%" y1="0%" x2="90%" y2="100%">
         <stop offset="0%" stop-color="#ece9e2" stop-opacity="0.05" />
         <stop offset="45%" stop-color="#ece9e2" stop-opacity="0.2" />
@@ -1188,7 +1191,7 @@
       <polygon points="968,234 968,238 0,510 0,380" fill="#d46784" />
       <polygon points="968,238 968,242 0,660 0,510" fill="#7c9d30" />
     </g>
-    <polygon points="1000,179 930,300 1070,300" fill="url(#prismGlass)" stroke="rgba(236,233,226,0.4)" stroke-width="2" />
+    <polygon points="1000,179 930,300 1070,300" fill="url(#prismGlass)" stroke="rgba(236,233,226,0.4)" stroke-width="2" filter="url(#prismSoftBlur)" />
     <line x1="1032" y1="234" x2="2000" y2="364" stroke="#ece9e2" stroke-width="6" stroke-linecap="round" opacity="0.85" mask="url(#fadeRightMask)" />
   </svg>
 </section>
