@@ -256,7 +256,6 @@
       radial-gradient(ellipse 900px 500px at 15% -10%, rgba(162,147,212,0.08), transparent 60%),
       radial-gradient(ellipse 700px 500px at 100% 0%, rgba(79,150,168,0.10), transparent 55%);
   }
-  #pillars, #approach, #proof, #process { position: relative; }
   .scroll-cue {
     display: none;
     align-items: center;
@@ -294,10 +293,6 @@
   }
   #hero .scroll-cue:hover { color: #0875c1; }
   #hero .scroll-cue:hover .scroll-cue-circle { border-color: #0875c1; }
-  #pillars .scroll-cue:hover { color: #967cdb; border-color: #967cdb; }
-  #approach .scroll-cue:hover { color: #00a979; border-color: #00a979; }
-  #proof .scroll-cue:hover { color: #d46784; border-color: #d46784; }
-  #process .scroll-cue:hover { color: #7c9d30; border-color: #7c9d30; }
   .scroll-cue .material-symbols-outlined {
     font-size: 22px;
     font-variation-settings: 'opsz' 24, 'wght' 340, 'FILL' 0, 'GRAD' 0;
@@ -939,9 +934,6 @@
       </div>
     </div>
   </div>
-  <a class="scroll-cue" href="#approach" aria-label="Scroll to next section">
-    <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
-  </a>
 </section>
 
 <section id="approach">
@@ -989,9 +981,6 @@
       </div>
     </div>
   </div>
-  <a class="scroll-cue" href="#proof" aria-label="Scroll to next section">
-    <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
-  </a>
 </section>
 
 <section id="proof">
@@ -1014,9 +1003,6 @@
       </div>
     </div>
   </div>
-  <a class="scroll-cue" href="#process" aria-label="Scroll to next section">
-    <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
-  </a>
 </section>
 
 <section id="process">
@@ -1127,9 +1113,6 @@
       </figure>
     </div>
   </div>
-  <a class="scroll-cue" href="#contact" data-scroll-end aria-label="Scroll to next section">
-    <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
-  </a>
 </section>
 
 <section id="contact" class="contact">
@@ -1160,14 +1143,6 @@
   setHeaderHeight();
   window.addEventListener('resize', setHeaderHeight);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(setHeaderHeight);
-
-  var scrollEndLink = document.querySelector('[data-scroll-end]');
-  if (scrollEndLink) {
-    scrollEndLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
-    });
-  }
 })();
 
 (function () {
