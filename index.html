@@ -668,7 +668,7 @@
   .gain-block.pillar-rel .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(0, 169, 121, calc(var(--active) * 0.5)); }
   .gain-block.pillar-tra .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(150, 124, 219, calc(var(--active) * 0.5)); }
   .gain-block.pillar-eng .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(212, 103, 132, calc(var(--active) * 0.5)); }
-  .gain-block.gain-identity .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(162, 147, 212, calc(var(--active) * 0.5)); }
+  .gain-block.gain-identity .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(236, 233, 226, calc(var(--active) * 0.5)); }
   .gain-facts {
     display: contents;
   }
@@ -688,20 +688,22 @@
   .gain-block.pillar-rel .gain-facts li:first-child { border-top-color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--line)); }
   .gain-block.pillar-tra .gain-facts li:first-child { border-top-color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--line)); }
   .gain-block.pillar-eng .gain-facts li:first-child { border-top-color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--line)); }
-  .gain-block.gain-identity .gain-facts li:first-child { border-top-color: color-mix(in srgb, #a293d4 calc(var(--active) * 100%), var(--line)); }
+  .gain-block.gain-identity .gain-facts li:first-child { border-top-color: color-mix(in srgb, #ece9e2 calc(var(--active) * 100%), var(--line)); }
   .gain-facts li::before {
-    content: "\2713";
+    content: "check";
+    font-family: 'Material Symbols Outlined';
+    font-variation-settings: 'opsz' 20, 'wght' 500, 'FILL' 0, 'GRAD' 0;
+    font-size: 16px;
     position: absolute;
     left: 0;
-    top: 0;
-    font-weight: 700;
+    top: 1px;
     transition: color 0.3s ease-out;
   }
   .gain-facts li:first-child::before { top: 18px; }
   .gain-block.pillar-rel .gain-facts li::before { color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-tra .gain-facts li::before { color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-eng .gain-facts li::before { color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text-muted)); }
-  .gain-block.gain-identity .gain-facts li::before { color: color-mix(in srgb, #a293d4 calc(var(--active) * 100%), var(--text-muted)); }
+  .gain-block.gain-identity .gain-facts li::before { color: color-mix(in srgb, #ece9e2 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-facts .hl { font-weight: 700; transition: color 0.3s ease-out; }
   .gain-block.pillar-rel .hl { color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-tra .hl { color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted)); }
@@ -1125,7 +1127,7 @@
         <ul class="gain-facts">
           <li><span class="hl">Documented clearly</span> enough that anyone can step in later, if you ever need them to.</li>
           <li>You <span class="hl">get real updates, not silence</span>, even when there's nothing urgent to report.</li>
-          <li>Every <span class="hl">update</span> works <span class="hl">for non-technical stakeholders</span> too, not just engineers.</li>
+          <li>All <span class="hl">updates</span> work <span class="hl">for non-technical stakeholders</span> too, not just engineers.</li>
         </ul>
       </div>
       <div class="gain-block pillar-eng">
