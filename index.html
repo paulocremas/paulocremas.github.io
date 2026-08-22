@@ -640,25 +640,27 @@
     line-height: 1.45;
   }
 
-  /* ---------- #approach: synthesized worry (magazine-scale) resolving into verbatim originals ---------- */
-  .worry-grid {
+  /* ---------- #approach: positive synthesis headline (magazine-scale) resolving into verbatim originals ---------- */
+  .gain-grid {
     margin-top: 32px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 40px 32px;
   }
-  .worry-fear {
+  .gain-lead {
     --active: 0;
     margin: 0 0 20px;
-    font-size: clamp(19px, 2.1vw, 23px);
-    font-weight: 600;
-    font-style: italic;
-    line-height: 1.4;
-    color: var(--text-muted);
-    text-shadow: 0 0 calc(var(--active) * 10px) rgba(236, 233, 226, calc(var(--active) * 0.35));
+    font-size: clamp(20px, 2.3vw, 25px);
+    font-weight: 750;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--text);
     transition: text-shadow 0.3s ease-out;
   }
-  .worry-facts {
+  .gain-block.pillar-rel .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(0, 169, 121, calc(var(--active) * 0.5)); }
+  .gain-block.pillar-tra .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(150, 124, 219, calc(var(--active) * 0.5)); }
+  .gain-block.pillar-eng .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(212, 103, 132, calc(var(--active) * 0.5)); }
+  .gain-facts {
     margin: 0;
     padding-top: 18px;
     border-top: 2px solid var(--line);
@@ -667,28 +669,28 @@
     flex-direction: column;
     gap: 12px;
   }
-  .worry-block.pillar-rel .worry-facts { border-top-color: #00a979; }
-  .worry-block.pillar-tra .worry-facts { border-top-color: #967cdb; }
-  .worry-block.pillar-eng .worry-facts { border-top-color: #d46784; }
-  .worry-facts li {
+  .gain-block.pillar-rel .gain-facts { border-top-color: #00a979; }
+  .gain-block.pillar-tra .gain-facts { border-top-color: #967cdb; }
+  .gain-block.pillar-eng .gain-facts { border-top-color: #d46784; }
+  .gain-facts li {
     position: relative;
     padding-left: 24px;
     font-size: 15px;
     line-height: 1.55;
     color: var(--text);
   }
-  .worry-facts li::before {
+  .gain-facts li::before {
     content: "\2713";
     position: absolute;
     left: 0;
     top: 0;
     font-weight: 700;
   }
-  .worry-block.pillar-rel .worry-facts li::before { color: #00a979; }
-  .worry-block.pillar-tra .worry-facts li::before { color: #967cdb; }
-  .worry-block.pillar-eng .worry-facts li::before { color: #d46784; }
+  .gain-block.pillar-rel .gain-facts li::before { color: #00a979; }
+  .gain-block.pillar-tra .gain-facts li::before { color: #967cdb; }
+  .gain-block.pillar-eng .gain-facts li::before { color: #d46784; }
   @media (max-width: 1023px) {
-    .worry-grid { grid-template-columns: 1fr; gap: 40px; }
+    .gain-grid { grid-template-columns: 1fr; gap: 40px; }
   }
 
   /* ---------- pillar rows (stacked, full-width, index-numbered) ---------- */
@@ -1092,26 +1094,26 @@
     <h2>How I actually work</h2>
     <p class="lede">Not just what I can build, <b>what it's like to build it with me</b>.</p>
 
-    <div class="worry-grid">
-      <div class="worry-block pillar-rel">
-        <p class="worry-fear">Losing track of your own project, work scattered across too many hands, and a contractor who goes quiet right before the calls that matter.</p>
-        <ul class="worry-facts">
+    <div class="gain-grid">
+      <div class="gain-block pillar-rel">
+        <p class="gain-lead">A single point of contact who owns your project start to finish, reachable on your schedule, and first to flag it when something's wrong.</p>
+        <ul class="gain-facts">
           <li>You hear it from me first, already with a plan to fix it.</li>
           <li>Just me, start to finish. No handoff, no re-explaining your project to someone new.</li>
           <li>Available for calls when it works for you, not just for me.</li>
         </ul>
       </div>
-      <div class="worry-block pillar-tra">
-        <p class="worry-fear">Weeks of silence, a system only one person understands, and reports written in a language your team doesn't speak.</p>
-        <ul class="worry-facts">
+      <div class="gain-block pillar-tra">
+        <p class="gain-lead">Regular updates, documentation anyone can pick up, and reports that make sense to your whole team, not just engineers.</p>
+        <ul class="gain-facts">
           <li>Documented clearly enough that anyone can step in later, if you ever need them to.</li>
           <li>You get a real update, not silence, even when there's nothing urgent to report.</li>
           <li>Every update works for non-technical stakeholders too, not just engineers.</li>
         </ul>
       </div>
-      <div class="worry-block pillar-eng">
-        <p class="worry-fear">A solution that doesn't fit, a plan too rigid to bend, and "AI-powered" as just another empty buzzword.</p>
-        <ul class="worry-facts">
+      <div class="gain-block pillar-eng">
+        <p class="gain-lead">A solution shaped around your actual problem, a plan that bends when you need it to, and AI doing real work inside the product, not just a buzzword.</p>
+        <ul class="gain-facts">
           <li>Every project starts with what you actually need, not a one-size-fits-all fix.</li>
           <li>We adjust together, not force the original plan to fit.</li>
           <li>AI running as part of how the product works day to day, not just something I use to build faster.</li>
@@ -1398,7 +1400,7 @@
   var links = [];
   navLinks.forEach(function (a) {
     var section = document.getElementById(a.getAttribute('href').slice(1));
-    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .worry-fear, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
+    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .gain-lead, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
   });
   var hero = document.getElementById('hero');
   if (hero) links.push({ link: document.querySelector('.nav-name'), section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
