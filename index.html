@@ -1199,7 +1199,7 @@
         </div>
           <p><b>Setup</b> A <span class="hl">smaller project</span> pulled data one request at a time. Fast enough, <span class="hl">no batching needed</span>.</p>
           <p><b>Turn</b> A far <span class="hl">larger project</span> needed the same kind of data. <span class="hl">Batch fetching got built</span> and proven there first.</p>
-          <p><b>Payoff</b> That <span class="hl">pattern moved back to the first project</span>, unforced. <span class="hl">One command, 18x faster.</span></p>
+          <p><b>Payoff</b> That <span class="hl">pattern moved back to the first project</span>, unforced. <span class="hl">One command, 18x faster</span>.</p>
         <span class="gloss"><a href="https://github.com/paulocremas-showcase/data-etl-demo" target="_blank" rel="noopener">Reproducible benchmark on GitHub &rarr;</a></span>
       </div>
       <div class="pillar-rel">
@@ -1207,8 +1207,8 @@
           <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">shield</span>Data loss incidents</div>
           <div class="proof-stat">3 &rarr; 0</div>
         </div>
-          <p><b>Setup</b> Three jobs shared <span class="hl">one API</span>, on schedules set by feel: roughly hourly, roughly daily, roughly daily.</p>
-          <p><b>Turn</b> The API's rate limit was <span class="hl">already tracked</span>, so a new schedule's collision with the others showed up immediately.</p>
+          <p><b>Setup</b> Three jobs shared <span class="hl">one API</span>, each on a window the business requested, and <span class="hl">most of those windows conflicted</span>.</p>
+          <p><b>Turn</b> The API's rate limit was <span class="hl">already tracked, and so were the runs</span>, so the collision showed up immediately.</p>
           <p><b>Payoff</b> Schedules were retimed around that limit. Jobs now run clear of each other, <span class="hl">data arrives complete</span>.</p>
         <span class="gloss"><a href="https://github.com/paulocremas-showcase/data-extraction-demo" target="_blank" rel="noopener">The fix, on GitHub &rarr;</a></span>
       </div>
