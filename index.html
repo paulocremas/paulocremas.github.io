@@ -689,7 +689,7 @@
   .gain-block.pillar-eng .gain-facts li:first-child { border-top-color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--line)); }
   .gain-block.gain-identity .gain-facts li:first-child { border-top-color: color-mix(in srgb, #e6d8b5 calc(var(--active) * 100%), var(--line)); }
   .gain-facts li::before {
-    content: "check";
+    content: attr(data-icon);
     font-family: 'Material Symbols Outlined';
     font-feature-settings: 'liga';
     -webkit-font-feature-settings: 'liga';
@@ -1121,33 +1121,33 @@
       <div class="gain-block pillar-rel">
         <p class="gain-lead">One thread,<br>start to finish.</p>
         <ul class="gain-facts">
-          <li>If something is off, you <span class="hl">hear it from me first</span>, already <span class="hl">with a plan</span> to fix it.</li>
-          <li><span class="hl">Just me. No handoff</span>, no re-explaining your project to someone new.</li>
-          <li><span class="hl">Available</span> for calls when it works for you, <span class="hl">in your timezone</span>, not just for me.</li>
+          <li data-icon="bolt">If something is off, you <span class="hl">hear it from me first</span>, already <span class="hl">with a plan</span> to fix it.</li>
+          <li data-icon="support_agent"><span class="hl">Just me. No handoff</span>, no re-explaining your project to someone new.</li>
+          <li data-icon="schedule"><span class="hl">Available</span> for calls when it works for you, <span class="hl">in your timezone</span>, not just for me.</li>
         </ul>
       </div>
       <div class="gain-block pillar-tra">
         <p class="gain-lead">Everything<br>in plain sight.</p>
         <ul class="gain-facts">
-          <li><span class="hl">Documented clearly</span> enough that anyone can step in later, if you ever need them to.</li>
-          <li>You <span class="hl">get real updates, not silence</span>, even when there's nothing urgent to report.</li>
-          <li>All <span class="hl">updates</span> work <span class="hl">for non-technical stakeholders</span> too, not just engineers.</li>
+          <li data-icon="description"><span class="hl">Documented clearly</span> enough that anyone can step in later, if you ever need them to.</li>
+          <li data-icon="update">You <span class="hl">get real updates, not silence</span>, even when there's nothing urgent to report.</li>
+          <li data-icon="translate">All <span class="hl">updates</span> work <span class="hl">for non-technical stakeholders</span> too, not just engineers.</li>
         </ul>
       </div>
       <div class="gain-block pillar-eng">
         <p class="gain-lead">Precise,<br>not off the shelf.</p>
         <ul class="gain-facts">
-          <li>Every project starts with <span class="hl">what you actually need</span>, not a one-size-fits-all fix.</li>
-          <li><span class="hl">We adjust together</span>, not force the original plan to fit.</li>
-          <li><span class="hl">AI running</span> as part of how the product works day to day, <span class="hl">not just something I use to build faster.</span></li>
+          <li data-icon="center_focus_strong">Every project starts with <span class="hl">what you actually need</span>, not a one-size-fits-all fix.</li>
+          <li data-icon="sync_alt"><span class="hl">We adjust together</span>, not force the original plan to fit.</li>
+          <li data-icon="smart_toy"><span class="hl">AI running</span> as part of how the product works day to day, <span class="hl">not just something I use to build faster.</span></li>
         </ul>
       </div>
       <div class="gain-block gain-identity">
         <p class="gain-lead">With your team,<br>not around it.</p>
         <ul class="gain-facts">
-          <li><span class="hl">Works</span> inside your <span class="hl">existing tools and process</span>, not a separate workflow bolted on the side.</li>
-          <li><span class="hl">Comfortable in meetings</span> and code review, <span class="hl">not</span> just heads-down <span class="hl">solo work</span>.</li>
-          <li>Helps <span class="hl">weigh the pros and cons</span>, then <span class="hl">goes with</span> what's <span class="hl">decided</span>.</li>
+          <li data-icon="integration_instructions"><span class="hl">Works</span> inside your <span class="hl">existing tools and process</span>, not a separate workflow bolted on the side.</li>
+          <li data-icon="groups"><span class="hl">Comfortable in meetings</span> and code review, <span class="hl">not</span> just heads-down <span class="hl">solo work</span>.</li>
+          <li data-icon="balance">Helps <span class="hl">weigh the pros and cons</span>, then <span class="hl">goes with</span> what's <span class="hl">decided</span>.</li>
         </ul>
       </div>
     </div>
