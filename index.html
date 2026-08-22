@@ -849,7 +849,11 @@
   .p-transparency::selection { background: rgba(150, 124, 219, 0.2); color: #967cdb; }
   .p-engineering::selection { background: rgba(212, 103, 132, 0.2); color: #d46784; }
   .p-financial::selection { background: rgba(124, 157, 48, 0.2); color: #7c9d30; }
-  #pillars:has(.pillar-row:hover) .p-word { color: var(--text-muted); text-shadow: none; }
+  #pillars:has(.pillar-row:hover) .p-security { color: color-mix(in srgb, #0875c1 35%, var(--text-muted)); text-shadow: none; }
+  #pillars:has(.pillar-row:hover) .p-reliability { color: color-mix(in srgb, #00a979 35%, var(--text-muted)); text-shadow: none; }
+  #pillars:has(.pillar-row:hover) .p-transparency { color: color-mix(in srgb, #967cdb 35%, var(--text-muted)); text-shadow: none; }
+  #pillars:has(.pillar-row:hover) .p-engineering { color: color-mix(in srgb, #d46784 35%, var(--text-muted)); text-shadow: none; }
+  #pillars:has(.pillar-row:hover) .p-financial { color: color-mix(in srgb, #7c9d30 35%, var(--text-muted)); text-shadow: none; }
   #pillars:has(.pillar-row.security:hover) .p-security { color: #0875c1; text-shadow: 0 0 14px rgba(8, 117, 193, 0.75); }
   #pillars:has(.pillar-row.reliability:hover) .p-reliability { color: #00a979; text-shadow: 0 0 14px rgba(0, 169, 121, 0.75); }
   #pillars:has(.pillar-row.transparency:hover) .p-transparency { color: #967cdb; text-shadow: 0 0 14px rgba(150, 124, 219, 0.75); }
