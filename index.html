@@ -640,61 +640,76 @@
     line-height: 1.45;
   }
 
-  /* ---------- #approach: flowing numbered list, no cards ---------- */
-  .approach-list {
-    margin-top: 20px;
-  }
-  .approach-item {
+  /* ---------- #approach: magazine-style pull quotes, alternating alignment ---------- */
+  .approach-features {
+    margin-top: 36px;
     display: flex;
-    align-items: baseline;
-    gap: 24px;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    gap: 52px;
   }
-  .approach-list .approach-item:last-child { border-bottom: none; }
-  .approach-num {
-    flex: 0 0 40px;
-    font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: 21px;
-    opacity: 0.55;
-    transition: opacity 0.3s ease;
+  .approach-feature { max-width: 620px; }
+  .approach-feature:nth-child(2) {
+    margin-left: auto;
+    text-align: right;
   }
-  .approach-item:hover .approach-num { opacity: 1; }
-  .approach-item.pillar-rel .approach-num { color: #00a979; }
-  .approach-item.pillar-tra .approach-num { color: #967cdb; }
-  .approach-item.pillar-eng .approach-num { color: #d46784; }
-  .approach-body { flex: 1 1 auto; min-width: 0; }
-  .approach-title {
+  .approach-quote {
     --active: 0;
-    margin: 0 0 4px;
-    font-size: 19px;
-    font-weight: 700;
+    margin: 0 0 16px;
+    font-size: clamp(26px, 3.6vw, 38px);
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
     color: var(--text);
-    transition: color 0.25s ease-out, text-shadow 0.25s ease-out;
+    transition: color 0.3s ease-out, text-shadow 0.3s ease-out;
   }
-  .approach-item.pillar-rel .approach-title {
-    text-shadow: 0 0 calc(var(--active) * 10px) rgba(0, 169, 121, calc(var(--active) * 0.6));
+  .approach-feature.pillar-rel .approach-quote {
+    color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text));
+    text-shadow: 0 0 calc(var(--active) * 16px) rgba(0, 169, 121, calc(var(--active) * 0.5));
   }
-  .approach-item.pillar-tra .approach-title {
-    text-shadow: 0 0 calc(var(--active) * 10px) rgba(150, 124, 219, calc(var(--active) * 0.6));
+  .approach-feature.pillar-tra .approach-quote {
+    color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text));
+    text-shadow: 0 0 calc(var(--active) * 16px) rgba(150, 124, 219, calc(var(--active) * 0.5));
   }
-  .approach-item.pillar-eng .approach-title {
-    text-shadow: 0 0 calc(var(--active) * 10px) rgba(212, 103, 132, calc(var(--active) * 0.6));
+  .approach-feature.pillar-eng .approach-quote {
+    color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text));
+    text-shadow: 0 0 calc(var(--active) * 16px) rgba(212, 103, 132, calc(var(--active) * 0.5));
   }
-  .approach-item.pillar-rel:hover .approach-title { text-shadow: 0 0 14px rgba(0, 169, 121, 0.75); }
-  .approach-item.pillar-tra:hover .approach-title { text-shadow: 0 0 14px rgba(150, 124, 219, 0.75); }
-  .approach-item.pillar-eng:hover .approach-title { text-shadow: 0 0 14px rgba(212, 103, 132, 0.75); }
-  .approach-text {
+  .approach-support {
     margin: 0;
-    font-size: 15.5px;
-    color: var(--text-muted);
-    line-height: 1.55;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
+  .approach-feature:nth-child(2) .approach-support { align-items: flex-end; }
+  .approach-support li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+  .approach-feature:nth-child(2) .approach-support li { padding-left: 0; padding-right: 18px; }
+  .approach-support li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+  .approach-feature:nth-child(2) .approach-support li::before { left: auto; right: 0; }
+  .approach-feature.pillar-rel .approach-support li::before { background: #00a979; }
+  .approach-feature.pillar-tra .approach-support li::before { background: #967cdb; }
+  .approach-feature.pillar-eng .approach-support li::before { background: #d46784; }
   @media (max-width: 640px) {
-    .approach-item { gap: 14px; padding: 18px 0; }
-    .approach-num { flex-basis: 30px; font-size: 17px; }
-    .approach-title { font-size: 17px; }
+    .approach-feature:nth-child(2) { margin-left: 0; text-align: left; }
+    .approach-feature:nth-child(2) .approach-support { align-items: flex-start; }
+    .approach-feature:nth-child(2) .approach-support li { padding-left: 18px; padding-right: 0; }
+    .approach-feature:nth-child(2) .approach-support li::before { left: 0; right: auto; }
   }
 
   /* ---------- pillar rows (stacked, full-width, index-numbered) ---------- */
@@ -1098,48 +1113,27 @@
     <h2>How I actually work</h2>
     <p class="lede">Not just what I can build, <b>what it's like to build it with me</b>.</p>
 
-    <div class="approach-list">
-      <div class="approach-item pillar-rel">
-        <span class="approach-num">01</span>
-        <div class="approach-body">
-          <p class="approach-title">If something's off</p>
-          <p class="approach-text">You hear about problems from me first, already with a plan to fix them.</p>
-        </div>
+    <div class="approach-features">
+      <div class="approach-feature pillar-rel">
+        <p class="approach-quote">You're never the last to know.</p>
+        <ul class="approach-support">
+          <li>Problems surface first, already with a plan attached.</li>
+          <li>One person, start to finish, reachable on your schedule.</li>
+        </ul>
       </div>
-      <div class="approach-item pillar-rel">
-        <span class="approach-num">02</span>
-        <div class="approach-body">
-          <p class="approach-title">Direct access, on your schedule</p>
-          <p class="approach-text">Just me, start to finish, no handoff, no re-explaining your project to someone new, and calls happen when it works for you, not just for me.</p>
-        </div>
+      <div class="approach-feature pillar-tra">
+        <p class="approach-quote">Nothing here runs on guessing.</p>
+        <ul class="approach-support">
+          <li>Real updates arrive even when there's nothing urgent to report.</li>
+          <li>Documented clearly enough that anyone could step in later.</li>
+        </ul>
       </div>
-      <div class="approach-item pillar-tra">
-        <span class="approach-num">03</span>
-        <div class="approach-body">
-          <p class="approach-title">Not dependent on me</p>
-          <p class="approach-text">Documented clearly enough that anyone can step in later, if you ever need them to.</p>
-        </div>
-      </div>
-      <div class="approach-item pillar-tra">
-        <span class="approach-num">04</span>
-        <div class="approach-body">
-          <p class="approach-title">Updates that actually land</p>
-          <p class="approach-text">You get a real update, not silence, even when there's nothing urgent to report, explained so it makes sense to non-technical stakeholders too.</p>
-        </div>
-      </div>
-      <div class="approach-item pillar-eng">
-        <span class="approach-num">05</span>
-        <div class="approach-body">
-          <p class="approach-title">Grounded in your actual problem</p>
-          <p class="approach-text">Every project starts with what you actually need, not a one-size-fits-all fix, and if scope changes, we adjust together instead of forcing the original plan to fit.</p>
-        </div>
-      </div>
-      <div class="approach-item pillar-eng">
-        <span class="approach-num">06</span>
-        <div class="approach-body">
-          <p class="approach-title">AI in the product</p>
-          <p class="approach-text">AI running as part of how the product works day to day, not just something I use to build faster.</p>
-        </div>
+      <div class="approach-feature pillar-eng">
+        <p class="approach-quote">Built around your problem, not a template.</p>
+        <ul class="approach-support">
+          <li>Scope bends when your reality changes.</li>
+          <li>AI runs inside the product itself, not just behind my keyboard.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1422,7 +1416,7 @@
   var links = [];
   navLinks.forEach(function (a) {
     var section = document.getElementById(a.getAttribute('href').slice(1));
-    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .approach-title, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
+    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .approach-quote, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
   });
   var hero = document.getElementById('hero');
   if (hero) links.push({ link: document.querySelector('.nav-name'), section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
