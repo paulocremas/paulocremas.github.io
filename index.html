@@ -668,7 +668,6 @@
   .gain-block.pillar-rel .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(0, 169, 121, calc(var(--active) * 0.5)); }
   .gain-block.pillar-tra .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(150, 124, 219, calc(var(--active) * 0.5)); }
   .gain-block.pillar-eng .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(212, 103, 132, calc(var(--active) * 0.5)); }
-  .gain-block.gain-identity .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(236, 233, 226, calc(var(--active) * 0.5)); }
   .gain-facts {
     display: contents;
   }
@@ -692,6 +691,8 @@
   .gain-facts li::before {
     content: "check";
     font-family: 'Material Symbols Outlined';
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
     font-variation-settings: 'opsz' 20, 'wght' 500, 'FILL' 0, 'GRAD' 0;
     font-size: 16px;
     position: absolute;
@@ -1134,7 +1135,7 @@
         <p class="gain-lead">Precise,<br>not off the shelf.</p>
         <ul class="gain-facts">
           <li>Every project starts with <span class="hl">what you actually need</span>, not a one-size-fits-all fix.</li>
-          <li><span class="hl">We adjust together,</span> not force the original plan to fit.</li>
+          <li><span class="hl">We adjust together</span>, not force the original plan to fit.</li>
           <li><span class="hl">AI running</span> as part of how the product works day to day, <span class="hl">not just something I use to build faster.</span></li>
         </ul>
       </div>
