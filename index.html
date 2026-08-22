@@ -169,6 +169,10 @@
     --accent: #00a979;
     --accent-soft: rgba(0, 169, 121, 0.14);
   }
+  #proof {
+    --accent: #967cdb;
+    --accent-soft: rgba(150, 124, 219, 0.14);
+  }
   #approach .tag {
     color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted));
     text-shadow: 0 0 calc(var(--active) * 12px) rgba(0, 169, 121, calc(var(--active) * 0.65));
@@ -189,6 +193,7 @@
     text-shadow: 0 0 calc(var(--active) * 12px) rgba(150, 124, 219, calc(var(--active) * 0.65));
   }
   #proof .tag::selection { background: rgba(150, 124, 219, 0.2); color: #967cdb; }
+  #proof .lede { margin-bottom: 32px; }
   #contact .tag {
     color: color-mix(in srgb, #7c9d30 calc(var(--active) * 100%), var(--text-muted));
     text-shadow: 0 0 calc(var(--active) * 12px) rgba(124, 157, 48, calc(var(--active) * 0.65));
@@ -1191,7 +1196,7 @@
   <div class="wrap-wide">
     <div class="tag">/ proof</div>
     <h2>Measured,<br>not implied.</h2>
-    <p class="lede">Every number below is real, pulled from systems I've built and run in production, generalized here to keep client details confidential.</p>
+    <p class="lede"><b>Every number below is real</b>, pulled from systems I've built and run in production.</p>
 
     <div class="mini-grid proof-grid">
       <div class="pillar-eng">
