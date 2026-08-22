@@ -735,6 +735,12 @@
   }
   @media (min-width: 641px) and (max-width: 1023px) {
     .mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* odd card count leaves one trailing card alone on the last row: center it instead of flush left */
+    .mini-grid > div:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: calc(50% - 9px);
+    }
   }
   .p-security { color: color-mix(in srgb, #0875c1 calc(var(--active) * 100%), var(--text-muted)); text-shadow: 0 0 calc(var(--active) * 10px) rgba(8, 117, 193, calc(var(--active) * 0.6)); }
   .p-reliability { color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted)); text-shadow: 0 0 calc(var(--active) * 10px) rgba(0, 169, 121, calc(var(--active) * 0.6)); }
