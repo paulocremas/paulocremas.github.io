@@ -220,7 +220,7 @@
   .pillar-rel .gain-facts li::selection,
   .pillar-rel .hl::selection,
   .proof-grid > div.pillar-rel .proof-stat::selection,
-  .proof-grid > div.pillar-rel > p::selection { background: rgba(0, 169, 121, 0.2); color: #00a979; }
+  .proof-grid > div.pillar-rel .proof-body p::selection { background: rgba(0, 169, 121, 0.2); color: #00a979; }
   .pillar-tra::selection,
   .pillar-tra .mini-label::selection,
   .pillar-tra .mini-label .material-symbols-outlined::selection,
@@ -236,13 +236,13 @@
   .pillar-eng .gain-facts li::selection,
   .pillar-eng .hl::selection,
   .proof-grid > div.pillar-eng .proof-stat::selection,
-  .proof-grid > div.pillar-eng > p::selection { background: rgba(212, 103, 132, 0.2); color: #d46784; }
+  .proof-grid > div.pillar-eng .proof-body p::selection { background: rgba(212, 103, 132, 0.2); color: #d46784; }
   .pillar-fin::selection,
   .pillar-fin .mini-label::selection,
   .pillar-fin .mini-label .material-symbols-outlined::selection,
   .pillar-fin .hl::selection,
   .proof-grid > div.pillar-fin .proof-stat::selection,
-  .proof-grid > div.pillar-fin > p::selection { background: rgba(124, 157, 48, 0.2); color: #7c9d30; }
+  .proof-grid > div.pillar-fin .proof-body p::selection { background: rgba(124, 157, 48, 0.2); color: #7c9d30; }
   .gain-identity::selection,
   .gain-identity .gain-lead::selection,
   .gain-identity .gain-facts li::selection,
@@ -473,17 +473,23 @@
   }
 
   /* ---------- #proof: card grid with a 3-beat story (setup / turn / payoff) ---------- */
-  /* subgrid: each row (head, setup, turn, payoff, link) sizes to the tallest of the 3 cards, so beats line up across cards */
+  /* subgrid: head/body/link rows size to the tallest of the 3 cards, so those bookends line up; the 3 beats inside .proof-body get their own fixed gap instead of a shared row each, so spacing stays equal within a card regardless of the other cards' text length */
   .mini-grid.proof-grid {
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-rows: auto auto auto;
   }
   .mini-grid.proof-grid > div {
     --active: 0;
     display: grid;
     grid-template-rows: subgrid;
-    grid-row: span 5;
+    grid-row: span 3;
     row-gap: 14px;
     padding: 22px 20px;
+  }
+  .proof-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-self: center;
   }
   .proof-head {
     display: flex;
@@ -523,14 +529,13 @@
     color: color-mix(in srgb, #7c9d30 calc(var(--active) * 100%), var(--text-muted));
     text-shadow: 0 0 calc(var(--active) * 10px) rgba(124, 157, 48, calc(var(--active) * 0.6));
   }
-  .proof-grid > div > p {
+  .proof-body p {
     margin: 0;
     font-size: 17px;
     line-height: 1.55;
     color: var(--text);
-    align-self: center;
   }
-  .proof-grid > div > p b {
+  .proof-body p b {
     font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 700;
@@ -691,7 +696,7 @@
     margin-top: 32px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(2, auto);
     column-gap: 48px;
     row-gap: 40px;
   }
@@ -699,7 +704,7 @@
     --active: 0;
     display: grid;
     grid-template-rows: subgrid;
-    grid-row: span 4;
+    grid-row: span 2;
     row-gap: 12px;
   }
   .gain-lead {
@@ -715,7 +720,12 @@
   .gain-block.pillar-tra .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(150, 124, 219, calc(var(--active) * 0.5)); }
   .gain-block.pillar-eng .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(212, 103, 132, calc(var(--active) * 0.5)); }
   .gain-facts {
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-self: center;
+    margin: 0;
+    padding: 0;
   }
   .gain-facts li {
     position: relative;
@@ -724,7 +734,6 @@
     font-size: 15px;
     line-height: 1.55;
     color: var(--text);
-    align-self: center;
   }
   .gain-facts li:first-child {
     padding-top: 18px;
@@ -1197,8 +1206,8 @@
         <p class="gain-lead">Precise,<br>not off the shelf.</p>
         <ul class="gain-facts">
           <li data-icon="center_focus_strong">Every project starts with <span class="hl">what you actually need</span>, not a one-size-fits-all fix.</li>
-          <li data-icon="sync_alt"><span class="hl">We adjust together</span>, not force the original plan to fit.</li>
           <li data-icon="smart_toy"><span class="hl">AI running</span> as part of how the product works day to day, <span class="hl">not just something I use to build faster.</span></li>
+          <li data-icon="sync_alt"><span class="hl">We adjust together</span>, not force the original plan to fit.</li>
         </ul>
       </div>
       <div class="gain-block gain-identity">
@@ -1225,9 +1234,11 @@
           <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">speed</span>Data sync speed</div>
           <div class="proof-stat">18x</div>
         </div>
+        <div class="proof-body">
           <p><b>Setup</b> A <span class="hl">smaller project</span> pulled data one request at a time. Fast enough, <span class="hl">no batching needed</span>.</p>
           <p><b>Turn</b> A far <span class="hl">larger project</span> needed the same kind of data. <span class="hl">Batch fetching got built</span> and proven there first.</p>
           <p><b>Payoff</b> That <span class="hl">pattern moved back to the first project</span>, unforced. One command, <span class="hl">18x faster</span>.</p>
+        </div>
         <span class="gloss"><a href="https://github.com/paulocremas-showcase/data-etl-demo" target="_blank" rel="noopener">Reproducible benchmark on GitHub &rarr;</a></span>
       </div>
       <div class="pillar-rel">
@@ -1235,9 +1246,11 @@
           <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">shield</span>Data loss incidents</div>
           <div class="proof-stat">3 &rarr; 0</div>
         </div>
+        <div class="proof-body">
           <p><b>Setup</b> <span class="hl">Three jobs shared one API</span>, each on a window the business requested, and most of those <span class="hl">windows conflicted</span>.</p>
           <p><b>Turn</b> The API's <span class="hl">rate limit and runs</span> were already <span class="hl">tracked</span>, so the <span class="hl">collision showed up immediately</span>.</p>
           <p><b>Payoff</b> <span class="hl">Schedules were retimed</span> around that limit. Jobs now run clear of each other, <span class="hl">data arrives complete</span>.</p>
+        </div>
         <span class="gloss"><a href="https://github.com/paulocremas-showcase/data-extraction-demo" target="_blank" rel="noopener">The fix, on GitHub &rarr;</a></span>
       </div>
       <div class="pillar-fin">
@@ -1245,9 +1258,11 @@
           <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>Manual product review</div>
           <div class="proof-stat">AI Batches</div>
         </div>
+        <div class="proof-body">
           <p><b>Setup</b> Luxury resale <span class="hl">items were entered by hand</span>, by many employees across many locations.</p>
           <p><b>Turn</b> Getting every location to <span class="hl">format</span> listings the same way <span class="hl">was never going to hold at that scale</span>.</p>
           <p><b>Payoff</b> <span class="hl">AI batches now standardize every listing</span>, each one well-positioned to catch exactly what's missing.</p>
+        </div>
         <span class="gloss"><a href="https://github.com/paulocremas-showcase/ai-enrichment-demo" target="_blank" rel="noopener">The code, on GitHub &rarr;</a></span>
       </div>
     </div>
