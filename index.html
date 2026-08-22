@@ -490,10 +490,13 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
-  .proof-grid .hl { font-weight: 700; }
+  .proof-grid .hl { font-weight: 700; transition: text-shadow 0.25s ease-out; }
   .proof-grid > div.pillar-eng .hl { color: #d46784; }
   .proof-grid > div.pillar-rel .hl { color: #00a979; }
   .proof-grid > div.pillar-fin .hl { color: #7c9d30; }
+  .proof-grid > div.pillar-eng:hover .hl { text-shadow: 0 0 10px rgba(212, 103, 132, 0.55); }
+  .proof-grid > div.pillar-rel:hover .hl { text-shadow: 0 0 10px rgba(0, 169, 121, 0.55); }
+  .proof-grid > div.pillar-fin:hover .hl { text-shadow: 0 0 10px rgba(124, 157, 48, 0.55); }
   .proof-grid .gloss {
     display: block;
     align-self: end;
@@ -530,12 +533,7 @@
     border: 1px solid var(--line);
     border-radius: 10px;
     padding: 16px 16px;
-    transition: box-shadow 0.3s ease;
   }
-  .mini-grid > div.pillar-rel:hover { box-shadow: 0 0 22px rgba(0, 169, 121, 0.25); }
-  .mini-grid > div.pillar-tra:hover { box-shadow: 0 0 22px rgba(150, 124, 219, 0.25); }
-  .mini-grid > div.pillar-eng:hover { box-shadow: 0 0 22px rgba(212, 103, 132, 0.25); }
-  .mini-grid > div.pillar-fin:hover { box-shadow: 0 0 22px rgba(124, 157, 48, 0.25); }
   .mini-grid > div .mini-label,
   .mini-grid > div .mini-text,
   .mini-grid > div .proof-stat,
