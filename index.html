@@ -640,6 +640,63 @@
     line-height: 1.45;
   }
 
+  /* ---------- #approach: flowing numbered list, no cards ---------- */
+  .approach-list {
+    margin-top: 20px;
+  }
+  .approach-item {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .approach-list .approach-item:last-child { border-bottom: none; }
+  .approach-num {
+    flex: 0 0 40px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 21px;
+    opacity: 0.55;
+    transition: opacity 0.3s ease;
+  }
+  .approach-item:hover .approach-num { opacity: 1; }
+  .approach-item.pillar-rel .approach-num { color: #00a979; }
+  .approach-item.pillar-tra .approach-num { color: #967cdb; }
+  .approach-item.pillar-eng .approach-num { color: #d46784; }
+  .approach-body { flex: 1 1 auto; min-width: 0; }
+  .approach-title {
+    --active: 0;
+    margin: 0 0 4px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    transition: color 0.25s ease-out, text-shadow 0.25s ease-out;
+  }
+  .approach-item.pillar-rel .approach-title {
+    text-shadow: 0 0 calc(var(--active) * 10px) rgba(0, 169, 121, calc(var(--active) * 0.6));
+  }
+  .approach-item.pillar-tra .approach-title {
+    text-shadow: 0 0 calc(var(--active) * 10px) rgba(150, 124, 219, calc(var(--active) * 0.6));
+  }
+  .approach-item.pillar-eng .approach-title {
+    text-shadow: 0 0 calc(var(--active) * 10px) rgba(212, 103, 132, calc(var(--active) * 0.6));
+  }
+  .approach-item.pillar-rel:hover .approach-title { text-shadow: 0 0 14px rgba(0, 169, 121, 0.75); }
+  .approach-item.pillar-tra:hover .approach-title { text-shadow: 0 0 14px rgba(150, 124, 219, 0.75); }
+  .approach-item.pillar-eng:hover .approach-title { text-shadow: 0 0 14px rgba(212, 103, 132, 0.75); }
+  .approach-text {
+    margin: 0;
+    font-size: 15.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  @media (max-width: 640px) {
+    .approach-item { gap: 14px; padding: 18px 0; }
+    .approach-num { flex-basis: 30px; font-size: 17px; }
+    .approach-title { font-size: 17px; }
+  }
+
   /* ---------- pillar rows (stacked, full-width, index-numbered) ---------- */
   .pillar-rows { margin-top: 16px; }
   .pillar-row {
@@ -1041,42 +1098,48 @@
     <h2>How I actually work</h2>
     <p class="lede">Not just what I can build, <b>what it's like to build it with me</b>.</p>
 
-    <div class="mini-grid">
-      <div class="pillar-rel">
-        <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">troubleshoot</span>If something's off</div>
-        <p class="mini-text">You hear it from me first, already with a plan to fix it.</p>
+    <div class="approach-list">
+      <div class="approach-item pillar-rel">
+        <span class="approach-num">01</span>
+        <div class="approach-body">
+          <p class="approach-title">If something's off</p>
+          <p class="approach-text">You hear about problems from me first, already with a plan to fix them.</p>
+        </div>
       </div>
-      <div class="pillar-rel">
-        <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">support_agent</span>Point of contact</div>
-        <p class="mini-text">Just me, start to finish. No handoff, no re-explaining your project to someone new.</p>
+      <div class="approach-item pillar-rel">
+        <span class="approach-num">02</span>
+        <div class="approach-body">
+          <p class="approach-title">Direct access, on your schedule</p>
+          <p class="approach-text">Just me, start to finish, no handoff, no re-explaining your project to someone new, and calls happen when it works for you, not just for me.</p>
+        </div>
       </div>
-      <div class="pillar-rel">
-        <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">schedule</span>Meets your time zone</div>
-        <p class="mini-text">Available for calls when it works for you, not just for me.</p>
+      <div class="approach-item pillar-tra">
+        <span class="approach-num">03</span>
+        <div class="approach-body">
+          <p class="approach-title">Not dependent on me</p>
+          <p class="approach-text">Documented clearly enough that anyone can step in later, if you ever need them to.</p>
+        </div>
       </div>
-      <div class="pillar-tra">
-        <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">description</span>Not dependent on me</div>
-        <p class="mini-text">Documented clearly enough that anyone can step in later, if you ever need them to.</p>
+      <div class="approach-item pillar-tra">
+        <span class="approach-num">04</span>
+        <div class="approach-body">
+          <p class="approach-title">Updates that actually land</p>
+          <p class="approach-text">You get a real update, not silence, even when there's nothing urgent to report, explained so it makes sense to non-technical stakeholders too.</p>
+        </div>
       </div>
-      <div class="pillar-tra">
-        <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">update</span>Never left wondering</div>
-        <p class="mini-text">You get a real update, not silence, even when there's nothing urgent to report.</p>
+      <div class="approach-item pillar-eng">
+        <span class="approach-num">05</span>
+        <div class="approach-body">
+          <p class="approach-title">Grounded in your actual problem</p>
+          <p class="approach-text">Every project starts with what you actually need, not a one-size-fits-all fix, and if scope changes, we adjust together instead of forcing the original plan to fit.</p>
+        </div>
       </div>
-      <div class="pillar-tra">
-        <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">translate</span>Explained in plain language</div>
-        <p class="mini-text">Every update works for non-technical stakeholders too, not just engineers.</p>
-      </div>
-      <div class="pillar-eng">
-        <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">center_focus_strong</span>Understanding your problem</div>
-        <p class="mini-text">Every project starts with what you actually need, not a one-size-fits-all fix.</p>
-      </div>
-      <div class="pillar-eng">
-        <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">sync_alt</span>If scope changes</div>
-        <p class="mini-text">We adjust together, not force the original plan to fit.</p>
-      </div>
-      <div class="pillar-eng">
-        <div class="mini-label"><span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>AI in the product</div>
-        <p class="mini-text">AI running as part of how the product works day to day, not just something I use to build faster.</p>
+      <div class="approach-item pillar-eng">
+        <span class="approach-num">06</span>
+        <div class="approach-body">
+          <p class="approach-title">AI in the product</p>
+          <p class="approach-text">AI running as part of how the product works day to day, not just something I use to build faster.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1359,7 +1422,7 @@
   var links = [];
   navLinks.forEach(function (a) {
     var section = document.getElementById(a.getAttribute('href').slice(1));
-    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
+    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .approach-title, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
   });
   var hero = document.getElementById('hero');
   if (hero) links.push({ link: document.querySelector('.nav-name'), section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
