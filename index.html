@@ -640,66 +640,56 @@
     line-height: 1.45;
   }
 
-  /* ---------- #approach: two narrative scenarios, setup/turn/payoff like #proof ---------- */
-  .story-grid {
-    margin-top: 28px;
+  /* ---------- #approach: synthesized worry (magazine-scale) resolving into verbatim originals ---------- */
+  .worry-grid {
+    margin-top: 32px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 28px 32px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px 32px;
   }
-  .story-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 26px 24px;
-    transition: box-shadow 0.3s ease;
-  }
-  .story-card.pillar-rel:hover { box-shadow: 0 0 22px rgba(0, 169, 121, 0.25); }
-  .story-card.pillar-eng:hover { box-shadow: 0 0 22px rgba(212, 103, 132, 0.25); }
-  .story-head {
+  .worry-fear {
     --active: 0;
+    margin: 0 0 20px;
+    font-size: clamp(19px, 2.1vw, 23px);
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--text-muted);
+    text-shadow: 0 0 calc(var(--active) * 10px) rgba(236, 233, 226, calc(var(--active) * 0.35));
+    transition: text-shadow 0.3s ease-out;
+  }
+  .worry-facts {
+    margin: 0;
+    padding-top: 18px;
+    border-top: 2px solid var(--line);
+    list-style: none;
     display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 18px;
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    color: color-mix(in srgb, var(--structure) calc(var(--active) * 100%), var(--text-muted));
-    transition: color 0.25s ease-out, text-shadow 0.25s ease-out;
+    flex-direction: column;
+    gap: 12px;
   }
-  .story-head .material-symbols-outlined {
-    font-size: 21px;
-    font-variation-settings: 'opsz' 20, 'wght' 340, 'FILL' 0, 'GRAD' 0;
-  }
-  .story-card.pillar-rel .story-head {
-    color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted));
-    text-shadow: 0 0 calc(var(--active) * 10px) rgba(0, 169, 121, calc(var(--active) * 0.6));
-  }
-  .story-card.pillar-eng .story-head {
-    color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text-muted));
-    text-shadow: 0 0 calc(var(--active) * 10px) rgba(212, 103, 132, calc(var(--active) * 0.6));
-  }
-  .story-card p {
-    margin: 0 0 14px;
-    font-size: 15.5px;
-    line-height: 1.6;
+  .worry-block.pillar-rel .worry-facts { border-top-color: #00a979; }
+  .worry-block.pillar-tra .worry-facts { border-top-color: #967cdb; }
+  .worry-block.pillar-eng .worry-facts { border-top-color: #d46784; }
+  .worry-facts li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 15px;
+    line-height: 1.55;
     color: var(--text);
   }
-  .story-card p:last-child { margin-bottom: 0; }
-  .story-card p b {
-    font-family: var(--font-mono);
-    font-size: 12px;
+  .worry-facts li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    top: 0;
     font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-right: 4px;
   }
-  .story-card .hl { font-weight: 700; }
-  .story-card.pillar-rel .hl { color: #00a979; }
-  .story-card.pillar-eng .hl { color: #d46784; }
+  .worry-block.pillar-rel .worry-facts li::before { color: #00a979; }
+  .worry-block.pillar-tra .worry-facts li::before { color: #967cdb; }
+  .worry-block.pillar-eng .worry-facts li::before { color: #d46784; }
+  @media (max-width: 1023px) {
+    .worry-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
 
   /* ---------- pillar rows (stacked, full-width, index-numbered) ---------- */
   .pillar-rows { margin-top: 16px; }
@@ -1102,18 +1092,30 @@
     <h2>How I actually work</h2>
     <p class="lede">Not just what I can build, <b>what it's like to build it with me</b>.</p>
 
-    <div class="story-grid">
-      <div class="story-card pillar-rel">
-        <div class="story-head"><span class="material-symbols-outlined" aria-hidden="true">bolt</span>If something breaks</div>
-        <p><b>Setup</b> It's the middle of the night on your side, and a pipeline you rely on goes down.</p>
-        <p><b>Turn</b> You don't hear about it from a support ticket you have to chase. I catch it first, already working the fix, and the update that reaches you is <span class="hl">written for whoever reads it</span>, not just for another engineer. If it needs a call, that happens <span class="hl">on your clock, not mine</span>.</p>
-        <p><b>Payoff</b> Same person who built it is the one fixing it, start to finish, and it's all <span class="hl">documented well enough</span> that none of this ever depended on catching me at my desk.</p>
+    <div class="worry-grid">
+      <div class="worry-block pillar-rel">
+        <p class="worry-fear">Losing track of your own project, work scattered across too many hands, and a contractor who goes quiet right before the calls that matter.</p>
+        <ul class="worry-facts">
+          <li>You hear it from me first, already with a plan to fix it.</li>
+          <li>Just me, start to finish. No handoff, no re-explaining your project to someone new.</li>
+          <li>Available for calls when it works for you, not just for me.</li>
+        </ul>
       </div>
-      <div class="story-card pillar-eng">
-        <div class="story-head"><span class="material-symbols-outlined" aria-hidden="true">tune</span>If your project changes</div>
-        <p><b>Setup</b> A project rarely stays exactly like the first conversation about it.</p>
-        <p><b>Turn</b> So it starts with <span class="hl">what you actually need</span>, not a template pulled off the shelf, and when the scope moves, <span class="hl">we adjust it together</span> instead of forcing the original plan to fit.</p>
-        <p><b>Payoff</b> AI runs <span class="hl">inside the product itself</span>, day to day, doing real work for your team, not just something I use behind the scenes to build faster.</p>
+      <div class="worry-block pillar-tra">
+        <p class="worry-fear">Weeks of silence, a system only one person understands, and reports written in a language your team doesn't speak.</p>
+        <ul class="worry-facts">
+          <li>Documented clearly enough that anyone can step in later, if you ever need them to.</li>
+          <li>You get a real update, not silence, even when there's nothing urgent to report.</li>
+          <li>Every update works for non-technical stakeholders too, not just engineers.</li>
+        </ul>
+      </div>
+      <div class="worry-block pillar-eng">
+        <p class="worry-fear">A solution that doesn't fit, a plan too rigid to bend, and "AI-powered" as just another empty buzzword.</p>
+        <ul class="worry-facts">
+          <li>Every project starts with what you actually need, not a one-size-fits-all fix.</li>
+          <li>We adjust together, not force the original plan to fit.</li>
+          <li>AI running as part of how the product works day to day, not just something I use to build faster.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1396,7 +1398,7 @@
   var links = [];
   navLinks.forEach(function (a) {
     var section = document.getElementById(a.getAttribute('href').slice(1));
-    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .story-head, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
+    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .worry-fear, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
   });
   var hero = document.getElementById('hero');
   if (hero) links.push({ link: document.querySelector('.nav-name'), section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
