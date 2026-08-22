@@ -980,7 +980,9 @@
     mix-blend-mode: screen;
     transition: opacity 0.35s ease-out;
   }
-  .contact-prism-wrap:hover .prism-spot { opacity: 1; }
+  @media (hover: hover) and (pointer: fine) {
+    .contact-prism-wrap:hover .prism-spot { opacity: 1; }
+  }
   .contact h2 { color: var(--text); }
   .contact-links {
     margin-top: 0;
@@ -1190,6 +1192,7 @@
   <div class="wrap-wide">
     <div class="tag">/ proof</div>
     <h2>Measured,<br>not implied.</h2>
+    <p class="lede">Every number below is real, pulled from systems I've built and run in production, generalized here to keep client details confidential.</p>
 
     <div class="mini-grid proof-grid">
       <div class="pillar-eng">
