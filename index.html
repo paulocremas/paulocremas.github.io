@@ -647,8 +647,8 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 40px 32px;
   }
+  .gain-block { --active: 0; }
   .gain-lead {
-    --active: 0;
     margin: 0 0 20px;
     font-size: clamp(22px, 2.6vw, 28px);
     font-weight: 750;
@@ -668,10 +668,11 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    transition: border-top-color 0.3s ease-out;
   }
-  .gain-block.pillar-rel .gain-facts { border-top-color: #00a979; }
-  .gain-block.pillar-tra .gain-facts { border-top-color: #967cdb; }
-  .gain-block.pillar-eng .gain-facts { border-top-color: #d46784; }
+  .gain-block.pillar-rel .gain-facts { border-top-color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--line)); }
+  .gain-block.pillar-tra .gain-facts { border-top-color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--line)); }
+  .gain-block.pillar-eng .gain-facts { border-top-color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--line)); }
   .gain-facts li {
     position: relative;
     padding-left: 24px;
@@ -685,10 +686,13 @@
     left: 0;
     top: 0;
     font-weight: 700;
+    transition: color 0.3s ease-out;
   }
-  .gain-block.pillar-rel .gain-facts li::before { color: #00a979; }
-  .gain-block.pillar-tra .gain-facts li::before { color: #967cdb; }
-  .gain-block.pillar-eng .gain-facts li::before { color: #d46784; }
+  .gain-block.pillar-rel .gain-facts li::before { color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted)); }
+  .gain-block.pillar-tra .gain-facts li::before { color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted)); }
+  .gain-block.pillar-eng .gain-facts li::before { color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text-muted)); }
+  .gain-facts .hl { font-weight: 700; }
+  .gain-block.pillar-tra .hl { color: #967cdb; }
   @media (max-width: 1023px) {
     .gain-grid { grid-template-columns: 1fr; gap: 40px; }
   }
@@ -1104,11 +1108,11 @@
         </ul>
       </div>
       <div class="gain-block pillar-tra">
-        <p class="gain-lead">No black boxes.</p>
+        <p class="gain-lead">Everything in plain sight.</p>
         <ul class="gain-facts">
-          <li>Documented clearly enough that anyone can step in later, if you ever need them to.</li>
-          <li>You get a real update, not silence, even when there's nothing urgent to report.</li>
-          <li>Every update works for non-technical stakeholders too, not just engineers.</li>
+          <li><span class="hl">Documented clearly</span> enough that anyone can step in later, if you ever need them to.</li>
+          <li>You <span class="hl">get a real update</span>, not silence, even when there's nothing urgent to report.</li>
+          <li>Every <span class="hl">update</span> works <span class="hl">for non-technical stakeholders</span> too, not just engineers.</li>
         </ul>
       </div>
       <div class="gain-block pillar-eng">
@@ -1400,7 +1404,7 @@
   var links = [];
   navLinks.forEach(function (a) {
     var section = document.getElementById(a.getAttribute('href').slice(1));
-    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .gain-lead, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
+    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .gain-block, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
   });
   var hero = document.getElementById('hero');
   if (hero) links.push({ link: document.querySelector('.nav-name'), section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
