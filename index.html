@@ -709,6 +709,7 @@
   .gain-block.pillar-rel .hl { color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-tra .hl { color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-eng .hl { color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text-muted)); }
+  .gain-block.gain-identity .hl { color: color-mix(in srgb, #ece9e2 calc(var(--active) * 100%), var(--text-muted)); }
   @media (max-width: 640px) {
     .gain-grid { grid-template-columns: 1fr; gap: 40px; }
   }
@@ -1142,9 +1143,9 @@
       <div class="gain-block gain-identity">
         <p class="gain-lead">With your team,<br>not around it.</p>
         <ul class="gain-facts">
-          <li>Works inside your existing tools and process, not a separate workflow bolted on the side.</li>
-          <li>Comfortable in meetings and code review, not just heads-down solo work.</li>
-          <li>Speaks up when something's a bad idea, instead of quietly building it anyway.</li>
+          <li><span class="hl">Works</span> inside your <span class="hl">existing tools and process</span>, not a separate workflow bolted on the side.</li>
+          <li><span class="hl">Comfortable in meetings</span> and code review, <span class="hl">not</span> just heads-down <span class="hl">solo work</span>.</li>
+          <li>Helps weigh the pros and cons, then goes with what's decided.</li>
         </ul>
       </div>
     </div>
