@@ -640,50 +640,66 @@
     line-height: 1.45;
   }
 
-  /* ---------- #approach: objection-handling Q&A, grouped by pillar, all 9 points kept ---------- */
-  .approach-qa {
-    margin-top: 32px;
+  /* ---------- #approach: two narrative scenarios, setup/turn/payoff like #proof ---------- */
+  .story-grid {
+    margin-top: 28px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 40px 32px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px 32px;
   }
-  .qa-group {
-    border-left: 2px solid var(--line);
-    padding-left: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 26px 24px;
+    transition: box-shadow 0.3s ease;
   }
-  .qa-group.pillar-rel { border-left-color: #00a979; }
-  .qa-group.pillar-tra { border-left-color: #967cdb; }
-  .qa-group.pillar-eng { border-left-color: #d46784; }
-  .qa-q {
-    margin: 0 0 6px;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-  .qa-q .qa-mark { font-weight: 700; }
-  .qa-group.pillar-rel .qa-mark { color: #00a979; }
-  .qa-group.pillar-tra .qa-mark { color: #967cdb; }
-  .qa-group.pillar-eng .qa-mark { color: #d46784; }
-  .qa-a {
+  .story-card.pillar-rel:hover { box-shadow: 0 0 22px rgba(0, 169, 121, 0.25); }
+  .story-card.pillar-eng:hover { box-shadow: 0 0 22px rgba(212, 103, 132, 0.25); }
+  .story-head {
     --active: 0;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: color-mix(in srgb, var(--structure) calc(var(--active) * 100%), var(--text-muted));
+    transition: color 0.25s ease-out, text-shadow 0.25s ease-out;
+  }
+  .story-head .material-symbols-outlined {
+    font-size: 21px;
+    font-variation-settings: 'opsz' 20, 'wght' 340, 'FILL' 0, 'GRAD' 0;
+  }
+  .story-card.pillar-rel .story-head {
+    color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted));
+    text-shadow: 0 0 calc(var(--active) * 10px) rgba(0, 169, 121, calc(var(--active) * 0.6));
+  }
+  .story-card.pillar-eng .story-head {
+    color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text-muted));
+    text-shadow: 0 0 calc(var(--active) * 10px) rgba(212, 103, 132, calc(var(--active) * 0.6));
+  }
+  .story-card p {
+    margin: 0 0 14px;
+    font-size: 15.5px;
+    line-height: 1.6;
     color: var(--text);
-    transition: text-shadow 0.3s ease-out;
   }
-  .qa-group.pillar-rel .qa-a { text-shadow: 0 0 calc(var(--active) * 12px) rgba(0, 169, 121, calc(var(--active) * 0.55)); }
-  .qa-group.pillar-tra .qa-a { text-shadow: 0 0 calc(var(--active) * 12px) rgba(150, 124, 219, calc(var(--active) * 0.55)); }
-  .qa-group.pillar-eng .qa-a { text-shadow: 0 0 calc(var(--active) * 12px) rgba(212, 103, 132, calc(var(--active) * 0.55)); }
-  .qa-group.pillar-rel .qa-item:hover .qa-a { text-shadow: 0 0 14px rgba(0, 169, 121, 0.75); }
-  .qa-group.pillar-tra .qa-item:hover .qa-a { text-shadow: 0 0 14px rgba(150, 124, 219, 0.75); }
-  .qa-group.pillar-eng .qa-item:hover .qa-a { text-shadow: 0 0 14px rgba(212, 103, 132, 0.75); }
-  @media (max-width: 1023px) {
-    .approach-qa { grid-template-columns: 1fr; gap: 36px 0; }
+  .story-card p:last-child { margin-bottom: 0; }
+  .story-card p b {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-right: 4px;
   }
+  .story-card .hl { font-weight: 700; }
+  .story-card.pillar-rel .hl { color: #00a979; }
+  .story-card.pillar-eng .hl { color: #d46784; }
 
   /* ---------- pillar rows (stacked, full-width, index-numbered) ---------- */
   .pillar-rows { margin-top: 16px; }
@@ -1086,48 +1102,18 @@
     <h2>How I actually work</h2>
     <p class="lede">Not just what I can build, <b>what it's like to build it with me</b>.</p>
 
-    <div class="approach-qa">
-      <div class="qa-group pillar-rel">
-        <div class="qa-item">
-          <p class="qa-q"><span class="qa-mark">Q</span>: What if something breaks?</p>
-          <p class="qa-a">You hear about it from me first, already with a plan to fix it.</p>
-        </div>
-        <div class="qa-item">
-          <p class="qa-q"><span class="qa-mark">Q</span>: Who do I actually talk to?</p>
-          <p class="qa-a">Just me, start to finish. No handoff, no re-explaining your project to someone new.</p>
-        </div>
-        <div class="qa-item">
-          <p class="qa-q"><span class="qa-mark">Q</span>: What if our schedules don't line up?</p>
-          <p class="qa-a">Calls happen when it works for you, not just for me.</p>
-        </div>
+    <div class="story-grid">
+      <div class="story-card pillar-rel">
+        <div class="story-head"><span class="material-symbols-outlined" aria-hidden="true">bolt</span>If something breaks</div>
+        <p><b>Setup</b> It's the middle of the night on your side, and a pipeline you rely on goes down.</p>
+        <p><b>Turn</b> You don't hear about it from a support ticket you have to chase. I catch it first, already working the fix, and the update that reaches you is <span class="hl">written for whoever reads it</span>, not just for another engineer. If it needs a call, that happens <span class="hl">on your clock, not mine</span>.</p>
+        <p><b>Payoff</b> Same person who built it is the one fixing it, start to finish, and it's all <span class="hl">documented well enough</span> that none of this ever depended on catching me at my desk.</p>
       </div>
-      <div class="qa-group pillar-tra">
-        <div class="qa-item">
-          <p class="qa-q"><span class="qa-mark">Q</span>: What if you're unavailable?</p>
-          <p class="qa-a">Documented clearly enough that anyone can step in later, if you ever need them to.</p>
-        </div>
-        <div class="qa-item">
-          <p class="qa-q"><span class="qa-mark">Q</span>: How do I know things are moving?</p>
-          <p class="qa-a">You get a real update, not silence, even when there's nothing urgent to report.</p>
-        </div>
-        <div class="qa-item">
-          <p class="qa-q"><span class="qa-mark">Q</span>: Will I understand the updates?</p>
-          <p class="qa-a">Every update works for non-technical stakeholders too, not just engineers.</p>
-        </div>
-      </div>
-      <div class="qa-group pillar-eng">
-        <div class="qa-item">
-          <p class="qa-q"><span class="qa-mark">Q</span>: Will this actually fit how we work?</p>
-          <p class="qa-a">Every project starts with what you actually need, not a one-size-fits-all fix.</p>
-        </div>
-        <div class="qa-item">
-          <p class="qa-q"><span class="qa-mark">Q</span>: What if our needs change mid-project?</p>
-          <p class="qa-a">We adjust together, not force the original plan to fit.</p>
-        </div>
-        <div class="qa-item">
-          <p class="qa-q"><span class="qa-mark">Q</span>: Is "AI-powered" just a buzzword here?</p>
-          <p class="qa-a">AI runs inside the product itself, day to day, not just something I use to build faster.</p>
-        </div>
+      <div class="story-card pillar-eng">
+        <div class="story-head"><span class="material-symbols-outlined" aria-hidden="true">tune</span>If your project changes</div>
+        <p><b>Setup</b> A project rarely stays exactly like the first conversation about it.</p>
+        <p><b>Turn</b> So it starts with <span class="hl">what you actually need</span>, not a template pulled off the shelf, and when the scope moves, <span class="hl">we adjust it together</span> instead of forcing the original plan to fit.</p>
+        <p><b>Payoff</b> AI runs <span class="hl">inside the product itself</span>, day to day, doing real work for your team, not just something I use behind the scenes to build faster.</p>
       </div>
     </div>
   </div>
@@ -1410,7 +1396,7 @@
   var links = [];
   navLinks.forEach(function (a) {
     var section = document.getElementById(a.getAttribute('href').slice(1));
-    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .qa-a, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
+    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .story-head, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
   });
   var hero = document.getElementById('hero');
   if (hero) links.push({ link: document.querySelector('.nav-name'), section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
