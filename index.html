@@ -660,6 +660,7 @@
   .gain-block.pillar-rel .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(0, 169, 121, calc(var(--active) * 0.5)); }
   .gain-block.pillar-tra .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(150, 124, 219, calc(var(--active) * 0.5)); }
   .gain-block.pillar-eng .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(212, 103, 132, calc(var(--active) * 0.5)); }
+  .gain-block.gain-identity .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(162, 147, 212, calc(var(--active) * 0.5)); }
   .gain-facts {
     margin: 0;
     padding-top: 18px;
@@ -673,6 +674,7 @@
   .gain-block.pillar-rel .gain-facts { border-top-color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--line)); }
   .gain-block.pillar-tra .gain-facts { border-top-color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--line)); }
   .gain-block.pillar-eng .gain-facts { border-top-color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--line)); }
+  .gain-block.gain-identity .gain-facts { border-top-color: color-mix(in srgb, #a293d4 calc(var(--active) * 100%), var(--line)); }
   .gain-facts li {
     position: relative;
     padding-left: 24px;
@@ -691,6 +693,7 @@
   .gain-block.pillar-rel .gain-facts li::before { color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-tra .gain-facts li::before { color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-eng .gain-facts li::before { color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text-muted)); }
+  .gain-block.gain-identity .gain-facts li::before { color: color-mix(in srgb, #a293d4 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-facts .hl { font-weight: 700; transition: color 0.3s ease-out; }
   .gain-block.pillar-tra .hl { color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted)); }
   @media (max-width: 1023px) {
@@ -1121,6 +1124,14 @@
           <li>Every project starts with what you actually need, not a one-size-fits-all fix.</li>
           <li>We adjust together, not force the original plan to fit.</li>
           <li>AI running as part of how the product works day to day, not just something I use to build faster.</li>
+        </ul>
+      </div>
+      <div class="gain-block gain-identity">
+        <p class="gain-lead">With your team,<br>not around it.</p>
+        <ul class="gain-facts">
+          <li>Works inside your existing tools and process, not a separate workflow bolted on the side.</li>
+          <li>Comfortable in meetings and code review, not just heads-down solo work.</li>
+          <li>Speaks up when something's a bad idea, instead of quietly building it anyway.</li>
         </ul>
       </div>
     </div>
