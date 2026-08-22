@@ -95,11 +95,11 @@
   .nav-links a[href="#process"]:hover { color: #d46784; }
   .nav-links a[href="#process"]::selection { background: rgba(212, 103, 132, 0.2); color: #d46784; }
   .nav-links a[href="#approach"] {
-    color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted));
-    text-shadow: 0 0 calc(var(--active) * 10px) rgba(150, 124, 219, calc(var(--active) * 0.65));
+    color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted));
+    text-shadow: 0 0 calc(var(--active) * 10px) rgba(0, 169, 121, calc(var(--active) * 0.65));
   }
-  .nav-links a[href="#approach"]:hover { color: #967cdb; }
-  .nav-links a[href="#approach"]::selection { background: rgba(150, 124, 219, 0.2); color: #967cdb; }
+  .nav-links a[href="#approach"]:hover { color: #00a979; }
+  .nav-links a[href="#approach"]::selection { background: rgba(0, 169, 121, 0.2); color: #00a979; }
   .nav-links a[href="#pillars"] {
     color: color-mix(in srgb, #0875c1 calc(var(--active) * 100%), var(--text-muted));
     text-shadow: 0 0 calc(var(--active) * 10px) rgba(8, 117, 193, calc(var(--active) * 0.65));
@@ -107,11 +107,11 @@
   .nav-links a[href="#pillars"]:hover { color: #0875c1; }
   .nav-links a[href="#pillars"]::selection { background: rgba(8, 117, 193, 0.2); color: #0875c1; }
   .nav-links a[href="#proof"] {
-    color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted));
-    text-shadow: 0 0 calc(var(--active) * 10px) rgba(0, 169, 121, calc(var(--active) * 0.65));
+    color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted));
+    text-shadow: 0 0 calc(var(--active) * 10px) rgba(150, 124, 219, calc(var(--active) * 0.65));
   }
-  .nav-links a[href="#proof"]:hover { color: #00a979; }
-  .nav-links a[href="#proof"]::selection { background: rgba(0, 169, 121, 0.2); color: #00a979; }
+  .nav-links a[href="#proof"]:hover { color: #967cdb; }
+  .nav-links a[href="#proof"]::selection { background: rgba(150, 124, 219, 0.2); color: #967cdb; }
   .nav-links a[href="#contact"] {
     color: color-mix(in srgb, #7c9d30 calc(var(--active) * 100%), var(--text-muted));
     text-shadow: 0 0 calc(var(--active) * 10px) rgba(124, 157, 48, calc(var(--active) * 0.65));
@@ -166,14 +166,14 @@
   }
   #process .tag::selection { background: rgba(212, 103, 132, 0.2); color: #d46784; }
   #approach {
-    --accent: #967cdb;
-    --accent-soft: rgba(150, 124, 219, 0.14);
+    --accent: #00a979;
+    --accent-soft: rgba(0, 169, 121, 0.14);
   }
   #approach .tag {
-    color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted));
-    text-shadow: 0 0 calc(var(--active) * 12px) rgba(150, 124, 219, calc(var(--active) * 0.65));
+    color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted));
+    text-shadow: 0 0 calc(var(--active) * 12px) rgba(0, 169, 121, calc(var(--active) * 0.65));
   }
-  #approach .tag::selection { background: rgba(150, 124, 219, 0.2); color: #967cdb; }
+  #approach .tag::selection { background: rgba(0, 169, 121, 0.2); color: #00a979; }
   #hero .tag {
     color: color-mix(in srgb, #a293d4 calc(var(--active) * 100%), var(--text-muted));
     text-shadow: 0 0 calc(var(--active) * 12px) rgba(162, 147, 212, calc(var(--active) * 0.4));
@@ -185,10 +185,10 @@
   }
   #pillars .tag::selection { background: rgba(8, 117, 193, 0.2); color: #0875c1; }
   #proof .tag {
-    color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted));
-    text-shadow: 0 0 calc(var(--active) * 12px) rgba(0, 169, 121, calc(var(--active) * 0.65));
+    color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted));
+    text-shadow: 0 0 calc(var(--active) * 12px) rgba(150, 124, 219, calc(var(--active) * 0.65));
   }
-  #proof .tag::selection { background: rgba(0, 169, 121, 0.2); color: #00a979; }
+  #proof .tag::selection { background: rgba(150, 124, 219, 0.2); color: #967cdb; }
   #contact .tag {
     color: color-mix(in srgb, #7c9d30 calc(var(--active) * 100%), var(--text-muted));
     text-shadow: 0 0 calc(var(--active) * 12px) rgba(124, 157, 48, calc(var(--active) * 0.65));
@@ -700,13 +700,17 @@
   }
   .gain-facts li:first-child::before { top: 18px; }
   .gain-facts li::before { color: color-mix(in srgb, #ece9e2 calc(var(--active) * 100%), var(--text-muted)); }
-  .gain-facts .hl { font-weight: 700; transition: color 0.3s ease-out; }
+  .gain-facts .hl { font-weight: 700; transition: color 0.3s ease-out, text-shadow 0.25s ease-out; }
   .gain-block.pillar-rel .hl { color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-tra .hl { color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-eng .hl { color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.gain-identity .hl {
     color: #63868f;
   }
+  .gain-block.pillar-rel:hover .hl { text-shadow: 0 0 10px rgba(0, 169, 121, 0.55); }
+  .gain-block.pillar-tra:hover .hl { text-shadow: 0 0 10px rgba(150, 124, 219, 0.55); }
+  .gain-block.pillar-eng:hover .hl { text-shadow: 0 0 10px rgba(212, 103, 132, 0.55); }
+  .gain-block.gain-identity:hover .hl { text-shadow: 0 0 10px rgba(99, 134, 143, 0.55); }
   @media (max-width: 640px) {
     .gain-grid { grid-template-columns: 1fr; gap: 40px; }
   }
