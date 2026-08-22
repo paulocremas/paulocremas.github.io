@@ -195,20 +195,42 @@
   }
   #contact .tag::selection { background: rgba(124, 157, 48, 0.2); color: #7c9d30; }
 
-  /* reused by both #proof's and #approach's mini-grid cards */
+  /* reused by both #proof's and #approach's cards: every text inside a pillar-tagged card selects in that card's color */
   .pillar-rel::selection,
   .pillar-rel .mini-label::selection,
   .pillar-rel .mini-label .material-symbols-outlined::selection,
-  .pillar-rel .mini-text::selection { background: rgba(0, 169, 121, 0.2); color: #00a979; }
+  .pillar-rel .mini-text::selection,
+  .pillar-rel .gain-lead::selection,
+  .pillar-rel .gain-facts li::selection,
+  .pillar-rel .hl::selection,
+  .proof-grid > div.pillar-rel .proof-stat::selection,
+  .proof-grid > div.pillar-rel > p::selection { background: rgba(0, 169, 121, 0.2); color: #00a979; }
   .pillar-tra::selection,
   .pillar-tra .mini-label::selection,
   .pillar-tra .mini-label .material-symbols-outlined::selection,
-  .pillar-tra .mini-text::selection { background: rgba(150, 124, 219, 0.2); color: #967cdb; }
+  .pillar-tra .mini-text::selection,
+  .pillar-tra .gain-lead::selection,
+  .pillar-tra .gain-facts li::selection,
+  .pillar-tra .hl::selection { background: rgba(150, 124, 219, 0.2); color: #967cdb; }
   .pillar-eng::selection,
   .pillar-eng .mini-label::selection,
   .pillar-eng .mini-label .material-symbols-outlined::selection,
-  .pillar-eng .mini-text::selection { background: rgba(212, 103, 132, 0.2); color: #d46784; }
-  .pillar-fin::selection { background: rgba(124, 157, 48, 0.2); color: #7c9d30; }
+  .pillar-eng .mini-text::selection,
+  .pillar-eng .gain-lead::selection,
+  .pillar-eng .gain-facts li::selection,
+  .pillar-eng .hl::selection,
+  .proof-grid > div.pillar-eng .proof-stat::selection,
+  .proof-grid > div.pillar-eng > p::selection { background: rgba(212, 103, 132, 0.2); color: #d46784; }
+  .pillar-fin::selection,
+  .pillar-fin .mini-label::selection,
+  .pillar-fin .mini-label .material-symbols-outlined::selection,
+  .pillar-fin .hl::selection,
+  .proof-grid > div.pillar-fin .proof-stat::selection,
+  .proof-grid > div.pillar-fin > p::selection { background: rgba(124, 157, 48, 0.2); color: #7c9d30; }
+  .gain-identity::selection,
+  .gain-identity .gain-lead::selection,
+  .gain-identity .gain-facts li::selection,
+  .gain-identity .hl::selection { background: rgba(99, 134, 143, 0.2); color: #63868f; }
 
   h1, h2, h3 {
     text-wrap: balance;
@@ -827,6 +849,11 @@
   .p-transparency::selection { background: rgba(150, 124, 219, 0.2); color: #967cdb; }
   .p-engineering::selection { background: rgba(212, 103, 132, 0.2); color: #d46784; }
   .p-financial::selection { background: rgba(124, 157, 48, 0.2); color: #7c9d30; }
+  #pillars:has(.pillar-row.security:hover) .p-security { color: #0875c1; text-shadow: 0 0 14px rgba(8, 117, 193, 0.75); }
+  #pillars:has(.pillar-row.reliability:hover) .p-reliability { color: #00a979; text-shadow: 0 0 14px rgba(0, 169, 121, 0.75); }
+  #pillars:has(.pillar-row.transparency:hover) .p-transparency { color: #967cdb; text-shadow: 0 0 14px rgba(150, 124, 219, 0.75); }
+  #pillars:has(.pillar-row.engineering:hover) .p-engineering { color: #d46784; text-shadow: 0 0 14px rgba(212, 103, 132, 0.75); }
+  #pillars:has(.pillar-row.financial:hover) .p-financial { color: #7c9d30; text-shadow: 0 0 14px rgba(124, 157, 48, 0.75); }
   .pillar-row.security .pillar-name {
     --active: 0;
     color: color-mix(in srgb, #0875c1 calc(var(--active) * 100%), var(--text-muted));
