@@ -645,11 +645,19 @@
     margin-top: 32px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px 48px;
+    grid-template-rows: repeat(4, auto);
+    column-gap: 48px;
+    row-gap: 40px;
   }
-  .gain-block { --active: 0; }
+  .gain-block {
+    --active: 0;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    row-gap: 12px;
+  }
   .gain-lead {
-    margin: 0 0 20px;
+    margin: 0;
     font-size: clamp(22px, 2.6vw, 28px);
     font-weight: 750;
     line-height: 1.3;
@@ -662,26 +670,25 @@
   .gain-block.pillar-eng .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(212, 103, 132, calc(var(--active) * 0.5)); }
   .gain-block.gain-identity .gain-lead { text-shadow: 0 0 calc(var(--active) * 14px) rgba(162, 147, 212, calc(var(--active) * 0.5)); }
   .gain-facts {
-    margin: 0;
-    padding-top: 18px;
-    border-top: 2px solid var(--line);
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: border-top-color 0.3s ease-out;
+    display: contents;
   }
-  .gain-block.pillar-rel .gain-facts { border-top-color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--line)); }
-  .gain-block.pillar-tra .gain-facts { border-top-color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--line)); }
-  .gain-block.pillar-eng .gain-facts { border-top-color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--line)); }
-  .gain-block.gain-identity .gain-facts { border-top-color: color-mix(in srgb, #a293d4 calc(var(--active) * 100%), var(--line)); }
   .gain-facts li {
     position: relative;
+    list-style: none;
     padding-left: 24px;
     font-size: 15px;
     line-height: 1.55;
     color: var(--text);
   }
+  .gain-facts li:first-child {
+    padding-top: 18px;
+    border-top: 2px solid var(--line);
+    transition: border-top-color 0.3s ease-out;
+  }
+  .gain-block.pillar-rel .gain-facts li:first-child { border-top-color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--line)); }
+  .gain-block.pillar-tra .gain-facts li:first-child { border-top-color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--line)); }
+  .gain-block.pillar-eng .gain-facts li:first-child { border-top-color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--line)); }
+  .gain-block.gain-identity .gain-facts li:first-child { border-top-color: color-mix(in srgb, #a293d4 calc(var(--active) * 100%), var(--line)); }
   .gain-facts li::before {
     content: "\2713";
     position: absolute;
@@ -690,13 +697,14 @@
     font-weight: 700;
     transition: color 0.3s ease-out;
   }
+  .gain-facts li:first-child::before { top: 18px; }
   .gain-block.pillar-rel .gain-facts li::before { color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-tra .gain-facts li::before { color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.pillar-eng .gain-facts li::before { color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-block.gain-identity .gain-facts li::before { color: color-mix(in srgb, #a293d4 calc(var(--active) * 100%), var(--text-muted)); }
   .gain-facts .hl { font-weight: 700; transition: color 0.3s ease-out; }
   .gain-block.pillar-tra .hl { color: color-mix(in srgb, #967cdb calc(var(--active) * 100%), var(--text-muted)); }
-  @media (max-width: 1023px) {
+  @media (max-width: 640px) {
     .gain-grid { grid-template-columns: 1fr; gap: 40px; }
   }
 
