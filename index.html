@@ -459,6 +459,7 @@
     grid-template-rows: auto auto auto auto auto;
   }
   .mini-grid.proof-grid > div {
+    --active: 0;
     display: grid;
     grid-template-rows: subgrid;
     grid-row: span 5;
@@ -518,10 +519,10 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
-  .proof-grid .hl { font-weight: 700; transition: text-shadow 0.25s ease-out; }
-  .proof-grid > div.pillar-eng .hl { color: #d46784; }
-  .proof-grid > div.pillar-rel .hl { color: #00a979; }
-  .proof-grid > div.pillar-fin .hl { color: #7c9d30; }
+  .proof-grid .hl { font-weight: 700; transition: color 0.25s ease-out, text-shadow 0.25s ease-out; }
+  .proof-grid > div.pillar-eng .hl { color: color-mix(in srgb, #d46784 calc(var(--active) * 100%), var(--text-muted)); }
+  .proof-grid > div.pillar-rel .hl { color: color-mix(in srgb, #00a979 calc(var(--active) * 100%), var(--text-muted)); }
+  .proof-grid > div.pillar-fin .hl { color: color-mix(in srgb, #7c9d30 calc(var(--active) * 100%), var(--text-muted)); }
   .proof-grid > div.pillar-eng:hover .hl { text-shadow: 0 0 10px rgba(212, 103, 132, 0.55); }
   .proof-grid > div.pillar-rel:hover .hl { text-shadow: 0 0 10px rgba(0, 169, 121, 0.55); }
   .proof-grid > div.pillar-fin:hover .hl { text-shadow: 0 0 10px rgba(124, 157, 48, 0.55); }
@@ -1470,7 +1471,7 @@
   var links = [];
   navLinks.forEach(function (a) {
     var section = document.getElementById(a.getAttribute('href').slice(1));
-    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .gain-block, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
+    if (section) links.push({ link: a, section: section, tag: section.querySelector('.tag'), extras: section.querySelectorAll('.proof-stat, .proof-grid > div, .p-word, .pillar-name, .pillar-points .material-symbols-outlined, .mini-label, .gain-block, .lede b, .lede a, .agent-list b, .agent-lead b, .contact-prism') });
   });
   var hero = document.getElementById('hero');
   if (hero) links.push({ link: document.querySelector('.nav-name'), section: hero, tag: hero.querySelector('.tag'), extras: hero.querySelectorAll('h1 em, .btn-primary') });
